@@ -47,3 +47,7 @@ Thumbs.db
 # # ========================
 WF/.java/
 WF/.cache/
+
+# Environment and tool caches
+.java/
+.cache/
