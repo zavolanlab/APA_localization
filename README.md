@@ -68,10 +68,11 @@ Follow the instruction from that repo "Developer Setup from source, with conda e
 Use the created conda environment "zavolab_pyutils" to execute the Jupyter Notebook.
 
 ### 4. Essential for developpers! Install nbstripout
+When in the `APA_localization` directory, run:
 ```bash
 nbstripout --install
 ```
-this will automatically hide the output of cells in juputer notebooks when pushed to github! Otherwise there is a risk of exposing your HPC cluster paths to public.
+This will automatically hide the output of cells in juputer notebooks when pushed to github! Otherwise there is a risk of exposing your HPC cluster paths to public.
 
 ### 5. Use the juputer notebook to configure the workflow and input table preparation
 Configuration of the workflows (i.e. creation of input .tsv with sample specification and .yaml config is done **inside** the jupyter notebook)

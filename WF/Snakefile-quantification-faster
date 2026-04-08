@@ -7,14 +7,13 @@ from typing import Tuple
 from snakemake.utils import validate
 
 ####
-# This is the second part of a large workflow, which assumes that bam files from technical replicates were merged, all chr-separated low-duplication bam files were created across all samples, 
-# and the coverages for PAQR were produced
+# This is the second part of a large workflow, which assumes that bam files were created and indexed, and technical replicates were merged
 ####
 
 ## Preparations
 localrules:  finish, separate_BED_pas_into_chromosomes
 
-# Get sample table (contains duplicated control samples ! -> needed for differential analysis)
+# Get sample table
 samples = pd.read_csv(
     config["samples_file"],
     header=0,
@@ -24,16 +23,17 @@ samples = pd.read_csv(
     sep="\t")
 
 samples.index = samples['sample']
-samples["paqr_condition"]="Unknown" # techical; need for PAQR to run properly
 
 rule finish:
     input:
+        ### PAS Atlas is separated into chromoses for efficient downstream processing
         BED_pas_per_chr=expand(os.path.join(
             config["output_dir"],
             "PAQR",
             config["organism"],
             "tandem_PAS_catalogue_per_chromosome","{chr}.bed"),
             chr = config["chromosomes"].split(" ")),
+        ### .bam files are separated into chromoses for efficient downstream processing
         chr_specific_bam=expand(os.path.join(
             config["output_dir"],
             "samples",
@@ -42,8 +42,12 @@ rule finish:
             "over_chrs",
             "{sample}.{chr}.bam"),
             chr = config["chromosomes"].split(" "), sample = list(samples.index)),
+        
+        ### .pkl files with coverage at terminal exons are created with PAQR2 scripts
         PKL_pas_coverage = expand(os.path.join(config["output_dir"],"PAQR",config["organism"],"coverages","{sample}.{chr}.pkl"),
             chr = config["chromosomes"].split(" "), sample = list(samples.index)),
+        
+        ### Gene expression is quantified with FeatureCounts - with customly prepared exonic segments and with standard GENCODE annotation
         exonicSegments_gene_counts = expand(os.path.join(config['output_dir'], "gene_expression_quantification", config["organism"],"FeatureCounts_exonic_segments","{sample}.exonic_segments.txt"),
             sample = list(samples.index)),
         standard_gene_counts = expand(os.path.join(config['output_dir'], "gene_expression_quantification", config["organism"],"FeatureCounts_standard","{sample}.standard.txt"),
@@ -246,28 +250,3 @@ rule FeatureCounts_standard:
     shell:
         """(set +o pipefail; mkdir -p {params.outdir}; \
         featureCounts -p --countReadPairs -O --fraction -Q 255 -s 2 -B -C -P -d 1 -D 10000000000000 -T {threads} -t exon -g gene_id -a {input.gtf} -o {output.out_gene_fragments_txt} {input.bam}) &> {log}"""
-
-
-rule FeatureCounts_gene_types:
-    input:
-        bam=os.path.join(
-                        config["output_dir"],
-                        "samples",
-                        "{sample}",
-                        "map_genome_merged",
-                        "{sample}.merged.uniquely_mapped.low_duplicate.bam"),
-        CDS_gtf = config['gene_type_segments_gtf'],
-    params:
-        outdir = os.path.join(config['output_dir'], "gene_expression_quantification", config["organism"],"FeatureCounts_gene_types","{d_cat}_{mm_mode}"),
-    output:
-        out_gene_fragments_txt = os.path.join(config['output_dir'], "gene_expression_quantification", config["organism"],"FeatureCounts_gene_types","{d_cat}_{mm_mode}","{sample}.{d_cat}_{mm_mode}.gene_types.txt"),
-    singularity:
-        "docker://continuumio/miniconda3:latest"
-    conda:
-        os.path.join(workflow.basedir, "envs", "FeatureCounts.yaml") 
-    threads:8
-    log:
-        os.path.join(config["local_log"],"FeatureCounts_gene_types_{sample}_{d_cat}_{mm_mode}.log")
-    shell:
-        """(set +o pipefail; mkdir -p {params.outdir}; \
-        featureCounts -p -O -M --fraction -s 2 -T 8 -t exon -g gene_id -a {input.CDS_gtf} -o {output.out_gene_fragments_txt} {input.bam}) &> {log}"""
