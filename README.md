@@ -67,10 +67,16 @@ Analysis in the notebook is largely based on the functions from [zavolab_pyutils
 Follow the instruction from that repo "Developer Setup from source, with conda environment".
 Use the created conda environment "zavolab_pyutils" to execute the Jupyter Notebook.
 
-### 4. Use the juputer notebook to configure the workflow and input table preparation
+### 4. Essential for developpers! Install nbstripout
+```bash
+nbstripout --install
+```
+this will automatically hide the output of cells in juputer notebooks when pushed to github! Otherwise there is a risk of exposing your HPC cluster paths to public.
+
+### 5. Use the juputer notebook to configure the workflow and input table preparation
 Configuration of the workflows (i.e. creation of input .tsv with sample specification and .yaml config is done **inside** the jupyter notebook)
 
-### 5. Executing the Workflows
+### 6. Executing the Workflows
 
 The heavy lifting is divided into (currently, three) separate Snakemake workflows located in the `WF/` directory.
 
@@ -78,7 +84,7 @@ The heavy lifting is divided into (currently, three) separate Snakemake workflow
 
 **On an HPC cluster like sciCORE**, workflows should be executed on a **login** node. Snakemake further automatically submits jobs to computational nodes.
 
-### 6. Downstream Analysis
+### 7. Downstream Analysis
 Once the Snakemake workflows are complete, all results are routed to the shared group directories defined in your `.env` file. 
 
 Use respective sections of the Jupyter Notebook to analyze the outputs. 
