@@ -1,0 +1,210 @@
+import os
+import pandas as pd
+import shutil
+import yaml
+from shlex import quote
+from typing import Tuple
+from snakemake.utils import validate
+
+####
+# This is the second part of a large workflow, which assumes that bam files from technical replicates were merged, all chr-separated low-duplication bam files were created across all samples, 
+# and the coverages for PAQR were produced
+####
+
+## Preparations
+localrules:  finish
+
+# Get sample table (contains duplicated control samples ! -> needed for differential analysis)
+samples = pd.read_csv(
+    config["samples_file"],
+    header=0,
+    index_col=None,
+    comment='#',
+    engine='python',
+    sep="\t")
+
+samples.index = samples['sample']
+samples["paqr_condition"]="Unknown" # techical; need for PAQR to run properly
+
+rule finish:
+    input:
+        TSV_pas_epxression_values = expand(os.path.join(
+            config["output_dir"],
+            "PAQR",
+            config["organism"],"quantifications",
+            "tandem_pas_expression-mean.{chromosome}.tsv"
+        ),
+        chromosome=config["chromosomes"].split(" ")),
+        # TSV_pas_epxression_values = expand(os.path.join(
+        #     config["output_dir"],
+        #     "PAQR",
+        #     config["organism"],"{d_cat}_{mm_mode}","{chr}",
+        #     "tandem_pas_expression.tsv"
+        # ),
+        # chr=config["chromosomes"].split(" "), d_cat = ['0'], mm_mode = ['um']),
+
+
+##############################################################################
+### PAQR - get matrix of raw counts of PAS sites in samples
+##############################################################################
+
+# rule PAQ_infer_relative_usage:
+#     """
+#     Infer used poly(A) sites based on the coverage profiles
+#     and determine relative usage of those.
+#     """
+#     input:
+#         BED_pas_per_chr = os.path.join(config["output_dir"],"PAQR",config["organism"],"tandem_PAS_catalogue_per_chromosome","{chr}.bed"),
+#         PKL_pas_coverage = lambda wildcards: expand(
+#             os.path.join(config["output_dir"],"PAQR",config["organism"],"coverages","{sample}.{{chr}}.pkl"),
+#             sample = list(samples.index)
+#         ),
+#         TSV_extensions = lambda wildcards: expand(
+#             os.path.join(config["output_dir"],"PAQR",config["organism"],"{{d_cat}}_{{mm_mode}}","{{chr}}","per_sample","extensions","{sample}.{{chr}}.{{d_cat}}.{{mm_mode}}.extensions.tsv"),
+#             sample = list(samples.index)
+#         ),
+#         SCRIPT_ = os.path.join(workflow.basedir, "scripts", "paqr","infer-pas-expression.py"),
+
+#     output:
+#         TSV_pas_relative_usages = os.path.join(
+#             config["output_dir"],
+#             "PAQR",
+#             config["organism"],"{d_cat}_{mm_mode}","{chr}",
+#             "tandem_pas_relative_usage.tsv"),
+#         TSV_pas_epxression_values = os.path.join(
+#             config["output_dir"],
+#             "PAQR",
+#             config["organism"],"{d_cat}_{mm_mode}","{chr}",
+#             "tandem_pas_expression.tsv"
+#         ),
+#         TSV_distal_sites = os.path.join(
+#             config["output_dir"],
+#             "PAQR",
+#             config["organism"],"{d_cat}_{mm_mode}","{chr}",
+#             "singular_pas_expression.tsv"
+#         )
+
+#     params:
+#         input_per_sample_dir_coverages = os.path.join(config["output_dir"],"PAQR",config["organism"],"{d_cat}_{mm_mode}","{chr}","per_sample","coverages"),
+#         input_per_sample_dir_extensions = os.path.join(config["output_dir"],"PAQR",config["organism"],"{d_cat}_{mm_mode}","{chr}","per_sample","extensions"),
+#         outdir = os.path.join(config["output_dir"],"PAQR",config["organism"],"{d_cat}_{mm_mode}","{chr}"),
+#         LIST_sample_conditions = lambda wildcards: samples["paqr_condition"].tolist(),
+#         LIST_sample_names = lambda wildcards: samples.index.tolist(),
+#         INT_read_length = config['PAQ_fragment_length'],
+#         INT_min_length_mean_coverage = config['PAQ_min_length_mean_coverage'],
+#         FLOAT_min_mean_exon_coverage = config['PAQ_min_mean_exon_coverage'],
+#         INT_distal_downstream_extension = config['PAQ_distal_downstream_extension'],
+#         FLOAT_max_mean_coverage = config['PAQ_max_mean_coverage'],
+#         FLOAT_cluster_distance = config['PAQ_cluster_distance'],
+#         INT_upstream_cluster_extension = config['PAQ_upstream_cluster_extension'],
+#         FLOAT_coverage_mse_ratio_limit = config['PAQ_coverage_mse_ratio_limit'],
+
+#     threads: 60
+
+#     log:
+#         os.path.join(config["local_log"],"PAQ_infer_relative_usage_{chr}_{d_cat}_{mm_mode}.log")
+
+#     singularity:
+#         "docker://continuumio/miniconda3:latest"
+#     conda:
+#         os.path.join(workflow.basedir, "envs", "PAQR.yaml")
+        
+#     shell:
+#         """mkdir -p {params.outdir}; \
+#         python {input.SCRIPT_} \
+#         --expressions_out {output.TSV_pas_epxression_values} \
+#         --clusters {input.BED_pas_per_chr} \
+#         --coverages_dir {params.input_per_sample_dir_coverages} \
+#         --conditions {params.LIST_sample_conditions} \
+#         --names {params.LIST_sample_names} \
+#         --ex_extension_dir {params.input_per_sample_dir_extensions} \
+#         --read_length {params.INT_read_length} \
+#         --min_coverage_region {params.INT_min_length_mean_coverage} \
+#         --min_mean_coverage {params.FLOAT_min_mean_exon_coverage} \
+#         --ds_reg_for_no_coverage {params.INT_distal_downstream_extension} \
+#         --min_cluster_distance {params.FLOAT_cluster_distance} \
+#         --mse_ratio_threshold {params.FLOAT_coverage_mse_ratio_limit} \
+#         --best_break_point_upstream_extension {params.INT_upstream_cluster_extension} \
+#         --max_downstream_coverage {params.FLOAT_max_mean_coverage} \
+#         --distal_sites {output.TSV_distal_sites} \
+#         --processors {threads} 1> {output.TSV_pas_relative_usages} 2> {log}"""
+
+rule PAQ_infer_relative_usage_mean:
+    """
+    Infer used poly(A) sites based on the coverage profiles
+    and determine relative usage of those.
+    """
+    input:
+        BED_pas_per_chr = os.path.join(config["output_dir"],"PAQR",config["organism"],"tandem_PAS_catalogue_per_chromosome","{chr}.bed"),
+        PKL_pas_coverage = lambda wildcards: expand(
+            os.path.join(config["output_dir"],"PAQR",config["organism"],"coverages","{sample}.{{chr}}.pkl"),
+            sample = list(samples.index)
+        ),
+        TSV_extensions = lambda wildcards: expand(
+            os.path.join(config["output_dir"],"PAQR",config["organism"],"extensions","{sample}.{{chr}}.extensions.tsv"),
+            sample = list(samples.index)
+        ),
+        SCRIPT_ = os.path.join(workflow.basedir, "scripts", "paqr","infer-pas-expression-mean.py"),
+
+    output:
+        TSV_pas_relative_usages = os.path.join(
+            config["output_dir"],
+            "PAQR",
+            config["organism"],"quantifications",
+            "tandem_pas_relative_usage-mean.{chr}.tsv"),
+        TSV_pas_epxression_values = os.path.join(
+            config["output_dir"],
+            "PAQR",
+            config["organism"],"quantifications",
+            "tandem_pas_expression-mean.{chr}.tsv"
+        ),
+        TSV_distal_sites = os.path.join(
+            config["output_dir"],
+            "PAQR",
+            config["organism"],"quantifications",
+            "singular_pas_expression-mean.{chr}.tsv"
+        ),
+
+    params:
+        input_per_sample_dir_coverages = os.path.join(config["output_dir"],"PAQR",config["organism"],"coverages"),
+        input_per_sample_dir_extensions = os.path.join(config["output_dir"],"PAQR",config["organism"],"extensions"),
+        outdir = os.path.join(config["output_dir"],"PAQR",config["organism"],"quantifications"),
+        LIST_sample_conditions = samples["paqr_condition"].tolist(),
+        LIST_sample_names = expand("{sample}.{{chr}}",sample = list(samples.index)),
+        INT_read_length = config['PAQ_fragment_length'],
+        INT_min_length_mean_coverage = config['PAQ_min_length_mean_coverage'],
+        FLOAT_min_mean_exon_coverage = config['PAQ_min_mean_exon_coverage'],
+        INT_distal_downstream_extension = config['PAQ_distal_downstream_extension'],
+        FLOAT_max_mean_coverage = config['PAQ_max_mean_coverage'],
+        FLOAT_cluster_distance = config['PAQ_cluster_distance'],
+        INT_upstream_cluster_extension = config['PAQ_upstream_cluster_extension'],
+        FLOAT_coverage_mse_ratio_limit = config['PAQ_coverage_mse_ratio_limit'],
+
+    threads: 20
+    resources:
+        mem_mb=70000,
+        runtime=1400,
+    log:
+        os.path.join(config["local_log"],"PAQ_infer_relative_usage_mean_{chr}.log")
+    conda:
+        os.path.join(workflow.basedir, "envs", "PAQR.yaml")
+
+    shell:
+        """mkdir -p {params.outdir}; \
+        python {input.SCRIPT_} \
+        --expressions_out {output.TSV_pas_epxression_values} \
+        --clusters {input.BED_pas_per_chr} \
+        --coverages_dir {params.input_per_sample_dir_coverages} \
+        --conditions {params.LIST_sample_conditions} \
+        --names {params.LIST_sample_names} \
+        --ex_extension_dir {params.input_per_sample_dir_extensions} \
+        --read_length {params.INT_read_length} \
+        --min_coverage_region {params.INT_min_length_mean_coverage} \
+        --min_mean_coverage {params.FLOAT_min_mean_exon_coverage} \
+        --ds_reg_for_no_coverage {params.INT_distal_downstream_extension} \
+        --min_cluster_distance {params.FLOAT_cluster_distance} \
+        --mse_ratio_threshold {params.FLOAT_coverage_mse_ratio_limit} \
+        --best_break_point_upstream_extension {params.INT_upstream_cluster_extension} \
+        --max_downstream_coverage {params.FLOAT_max_mean_coverage} \
+        --distal_sites {output.TSV_distal_sites} \
+        --processors {threads} 1> {output.TSV_pas_relative_usages} 2> {log}"""

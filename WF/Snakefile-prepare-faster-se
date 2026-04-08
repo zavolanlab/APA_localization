@@ -1,0 +1,635 @@
+import os
+import pandas as pd
+import shutil
+import yaml
+from shlex import quote
+from typing import Tuple
+from snakemake.utils import validate
+
+####
+# This is the first part of a large workflow, in which fastq files are downloaded / symbolically copied from another place on the cluster, mapped and fastqc'ed
+# Also, each .bam file is separated by chromosomes, and then the selection of low-duplicated reads is done, as well as coverages for PAQR are produced.
+####
+
+## Preparations
+localrules:  finish,get_fastq_files
+
+# Get sample table (contains duplicated control samples ! -> needed for differential analysis)
+samples = pd.read_csv(
+    config["samples_file"],
+    header=0,
+    index_col=None,
+    comment='#',
+    engine='python',
+    sep="\t")
+samples = samples.drop_duplicates('sample').reset_index(drop=True)
+samples.index = samples['sample']
+samples["paqr_condition"]="Unknown" # force one condition for PAQR quantification
+    
+rule finish:
+    input:
+        fastqc_input = expand(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "0.input.{read_pair}"),
+        sample = list(samples.index.values),read_pair=['R1']),
+        fastqc_no_polyA=expand(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "1.no_polyA.{read_pair}"),
+        sample = list(samples.index.values),read_pair=['R1']),
+        fastqc_adapter3trim = expand(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "3.adapter3trim.{read_pair}"),
+        sample = list(samples.index.values),read_pair=['R1']),
+        fastqc_mapped = expand(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "4.mapped"),
+        sample = list(samples.index.values)),
+        bam_low_dupl=expand(os.path.join(
+                                config["output_dir"],
+                                "samples",
+                                "{sample}",
+                                "map_genome",
+                                "{sample}.Aligned.sortedByCoord.uniquely_mapped.low_duplicate.bam"),
+                           sample = list(samples.index.values)),
+        fastqc_mapped_unique_low_duplicate = expand(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "5.mapped_unique_low_duplicate"),
+        sample = list(samples.index.values)),
+
+rule get_fastq_files:
+    """
+        Download data from ENCODE, SRA, or make a symbolic link if the data is present on the cluster
+    """
+    output:
+        fastq_1=(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.R1.fastq.gz")),
+
+    params:
+        path_1=lambda wildcards: samples.loc[wildcards.sample, "fq1"],
+        data_source = lambda wildcards: samples.loc[wildcards.sample, "source"],
+        outdir = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq")
+    threads: 1
+    log:
+        os.path.join(config["local_log"],"download_fastq_files_from_ENCODE_{sample}.log")
+    shell:
+        """(set +o pipefail; mkdir -p {params.outdir}; \
+        if [[ {params.data_source} == "ENCODE" ]]; then \
+        wget -O {output.fastq_1} {params.path_1}; \
+        elif [[ {params.data_source} == "CLUSTER" ]]; then \
+        rm -f {output.fastq_1} && ln -f -s {params.path_1} {output.fastq_1}; fi) \
+        &> {log}"""
+
+
+rule fastqc_input_files:
+    """
+        A quality control tool for high throughput sequence data
+    """
+    input:
+        reads=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.fastq.gz"),
+    output:
+        outdir=directory(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "0.input.{read_pair}")),
+    threads: 4
+    resources:
+        mem_mb=10000,
+        runtime=60,
+    singularity:
+        "docker://staphb/fastqc:0.12.1"
+    log:
+        os.path.join(config["local_log"],"fastqc_input_files__{sample}_{read_pair}.log"),
+    shell:
+        """(set +o pipefail; mkdir -p {output.outdir}; \
+        fastqc --outdir {output.outdir} \
+        --threads {threads} \
+        {input.reads}) \
+        &> {log}"""
+
+rule remove_polya:
+    """
+        Remove remaining poly(A) stretches from 3' end of R1 reads and poly(T) from 5'end of R2 reads if present
+    """
+    input:
+        reads=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.fastq.gz"),
+    output:
+        no_polya_fastq = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.2.no_polyA.fastq.gz"),
+    params:
+        outdir = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq"),
+    conda:
+        "envs/cutadapt.yaml"
+    threads: 10
+    resources:
+        mem_mb=50000,
+        runtime=300,
+    log:
+        os.path.join(config["local_log"],"remove_polya__{sample}_{read_pair}.log")
+    shell:
+        """(mkdir -p {params.outdir}; \
+        cutadapt -m 25 -j {threads} -a "A{{8}}N{{200}}" -a "T{{8}}N{{200}}" -o {output.no_polya_fastq} {input.reads};) \
+        &> {log}"""
+
+rule fastqc_remove_polya:
+    """
+        A quality control tool for high throughput sequence data
+    """
+    input:
+        reads = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.2.no_polyA.fastq.gz"),
+    output:
+        outdir=directory(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "1.no_polyA.{read_pair}")), 
+    threads: 4
+    resources:
+        mem_mb=10000,
+        runtime=60,
+    singularity:
+        "docker://staphb/fastqc:0.12.1"
+    log:
+        os.path.join(config["local_log"],"fastqc_remove_polya__{sample}_{read_pair}.log")
+    shell:
+        """(set +o pipefail; mkdir -p {output.outdir}; \
+        fastqc --outdir {output.outdir} \
+        --threads {threads} \
+        {input.reads}) \
+        &> {log}"""
+
+rule remove_adapters:
+    """
+        Remove adapters
+    """
+    input:
+        reads = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.2.no_polyA.fastq.gz"),
+    output:
+        trimmed_reads = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.3.adapter3trim.fastq.gz"),
+    params:
+        outdir = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq"),
+        adapters_3_1="GATCGGAAGAGCACAC",
+        adapters_3_2="GTGGTATCAACGCAGA",
+        adapters_3_3="GAAGAGCAAACGTCTG",
+        adapters_3_4="GTGGGGGGCCCAAGTC",
+    conda:
+        "envs/cutadapt.yaml"
+    threads: 10
+    resources:
+        mem_mb=50000,
+        runtime=300,
+    log:
+        os.path.join(config["local_log"],"remove_adapters__{sample}_{read_pair}.log")
+    shell:
+        """(mkdir -p {params.outdir}; \
+        cutadapt -m 25 -j {threads} -a {params.adapters_3_1} -a {params.adapters_3_2} -a {params.adapters_3_3} -o {output.trimmed_reads} {input.reads};) \
+        &> {log}"""
+
+rule fastqc_remove_adapters:
+    """
+        A quality control tool for high throughput sequence data
+    """
+    input:
+        reads = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.{read_pair}.3.adapter3trim.fastq.gz"),
+    output:
+        outdir=directory(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "3.adapter3trim.{read_pair}")), 
+    threads: 4
+    resources:
+        mem_mb=10000,
+        runtime=60,
+    singularity:
+        "docker://staphb/fastqc:0.12.1"
+    log:
+        os.path.join(config["local_log"],"fastqc_remove_adapters__{sample}_{read_pair}.log")
+    shell:
+        """(set +o pipefail; mkdir -p {output.outdir}; \
+        fastqc --outdir {output.outdir} \
+        --threads {threads} \
+        {input.reads}) \
+        &> {log}"""
+
+
+rule create_index_star_without_GTF:
+    """
+        Create index for STAR alignments without GTF
+    """
+    input:
+        genome=config["genome_file"],
+        gtf=config["gtf_file"],
+    output:
+        chromosome_info=os.path.join(
+            config["output_dir"],
+            "STAR_indices",
+            config["organism"],
+            "without_GTF",
+            "STAR_index",
+            "chrNameLength.txt",
+        ),
+        chromosomes_names=os.path.join(
+            config["output_dir"],
+            "STAR_indices",
+            config["organism"],
+            "without_GTF",
+            "STAR_index",
+            "chrName.txt",
+        ),
+    params:
+        output_dir=lambda wildcards, output: os.path.dirname(output.chromosome_info),
+        outFileNamePrefix=os.path.join(
+            config["output_dir"],"STAR_indices", config["organism"], "without_GTF", "STAR_index/STAR_"
+        ),
+    conda:
+        "envs/STAR.yaml"
+    threads: 12
+    log:
+        os.path.join(config["local_log"],"create_index_star.log"),
+    shell:
+        """(mkdir -p {params.output_dir}; \
+        STAR \
+        --runMode genomeGenerate \
+        --genomeDir {params.output_dir} \
+        --genomeFastaFiles {input.genome} \
+        --runThreadN {threads} \
+        --outFileNamePrefix {params.outFileNamePrefix}) \
+        &> {log}"""
+
+rule map_genome_star_se:
+    """
+        Map to genome using STAR
+    """
+    input:
+        chromosome_info=os.path.join(config["output_dir"],"STAR_indices",config["organism"],"without_GTF","STAR_index","chrNameLength.txt"),
+        fastq_1=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastq",
+            "{sample}.R1.3.adapter3trim.fastq.gz"),
+    output:
+        bam=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Aligned.sortedByCoord.out.bam",
+        ),
+        log_final_file=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Log.final.out",
+        ),
+    params:
+        outFileNamePrefix=lambda wildcards, output: output.bam.replace(
+            "Aligned.sortedByCoord.out.bam", ""
+        ),
+        STAR_index=lambda wildcards, input: os.path.dirname(input.chromosome_info),
+    conda:
+        "envs/STAR.yaml"
+    resources:
+        mem_mb=70000,
+        runtime=300,
+    threads: 12
+    log:
+        os.path.join(config["local_log"],"map_genome_star_pe__{sample}.log")
+    shell:
+        """(STAR \
+        --runMode alignReads \
+        --alignEndsType Local \
+        --runThreadN {threads} \
+        --genomeDir {params.STAR_index} \
+        --readFilesIn {input.fastq_1} \
+        --readFilesCommand zcat \
+        --outFileNamePrefix {params.outFileNamePrefix} \
+        --genomeLoad NoSharedMemory \
+        --outSAMtype BAM SortedByCoordinate \
+        --outFilterType BySJout \
+        --twopassMode None \
+        --outBAMsortingThreadN {threads} \
+        --outFilterMultimapNmax 500000000 \
+        --outSAMattrIHstart 0 \
+        --outSAMattributes All \
+        --limitOutSJcollapsed 5000000) \
+        &> {log}"""
+
+rule samtools_index_mapped:
+    """
+        index bam files
+    """
+    input:
+        bam=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Aligned.sortedByCoord.out.bam",
+        ),
+    output:
+        bai = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Aligned.sortedByCoord.out.bam.bai",
+        ),
+    conda:
+        "envs/samtools_latest.yaml"
+    threads: 12
+    resources:
+        mem_mb=20000,
+        runtime=60,
+    log:
+        os.path.join(config["local_log"],"samtools_index_mapped_{sample}.log")
+    shell:
+        """(samtools index -@ {threads} \
+        {input.bam}; ) &> {log}"""
+
+rule fastqc_mapped:
+    """
+        A quality control tool for high throughput sequence data
+    """
+    input:
+        reads = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Aligned.sortedByCoord.out.bam"),
+    output:
+        outdir=directory(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "4.mapped")), 
+    threads: 4
+    resources:
+        mem_mb=10000,
+        runtime=60,
+    singularity:
+        "docker://staphb/fastqc:0.12.1"
+    log:
+        os.path.join(config["local_log"],"fastqc_mapped__{sample}.log")
+    shell:
+        """(set +o pipefail; mkdir -p {output.outdir}; \
+        fastqc --outdir {output.outdir} \
+        --threads {threads} \
+        {input.reads}) \
+        &> {log}"""
+
+# Get only uniquely mapped reads
+
+rule get_uniquely_mapped_reads:
+    """
+        Get uniquely mapped reads
+    """
+    input:
+        bam=os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.Aligned.sortedByCoord.out.bam"),
+        bai=os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome",
+            "{sample}.Aligned.sortedByCoord.out.bam.bai",
+        ),
+    output:
+        bam_filtered=os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.Aligned.sortedByCoord.uniquely_mapped.bam"),
+    params:
+        outdir = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome"),
+    conda:
+        "envs/samtools_latest.yaml"
+    threads: 12
+    resources:
+        mem_mb=20000,
+        runtime=60,
+    log:
+        os.path.join(config["local_log"],"get_uniquely_mapped_reads_{sample}.log"),
+    shell:
+        """(set +o pipefail; mkdir -p {params.outdir}; \
+        samtools view -@ {threads} -h -q 255 -u {input.bam} | \
+        samtools sort -@ {threads} -o {output.bam_filtered}; \
+        samtools index -@ {threads} {output.bam_filtered}) \
+        &> {log}"""        
+
+# get reads present in not more than 10 duplicates        
+
+rule get_low_duplicate_bam:
+    """
+        Get a bed file from a bam file
+    """
+    input:
+        bam = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.Aligned.sortedByCoord.uniquely_mapped.bam"),
+    output:
+        bam_low_dupl=os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.Aligned.sortedByCoord.uniquely_mapped.low_duplicate.bam"),
+    params:
+        outdir = os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "map_genome"),
+        mkdupped_bam = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.uniquely_mapped.mkdupped.bam"),
+        sorted_mkdupped_bam = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.uniquely_mapped.mkdupped.sorted.bam"),
+        sorted_mkdupped_bai = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.uniquely_mapped.mkdupped.sorted.bam.bai"),
+        selected_dup_levels_file = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "selected_dup_levels.txt"),
+        deduplicated_bam_file_intermediate = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.dedup_intermediate.bam"),
+        selected_read_names_file = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "selected_read_names.txt"),
+        low_duplicates_intermediate = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.low_duplicates_intermediate.bam"),
+        bam_low_dupl_nonsorted = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.uniquely_mapped.low_duplicate.nonsorted.bam"),
+    conda:
+        "envs/samtools_latest.yaml"
+    threads: 12
+    resources:
+        mem_mb=20000,
+        runtime=60,
+    log:
+        os.path.join(config["local_log"],"get_low_duplicate_bam_{sample}.log"),
+    shell:
+        """(set +o pipefail; mkdir -p {params.outdir}; \
+        samtools collate -@ {threads} -O -u {input.bam} | \
+        samtools fixmate -@ {threads} -m -u - - | \
+        samtools sort -@ {threads} -u - | \
+        samtools markdup -@ {threads} --duplicate-count -t -S --include-fails - {params.mkdupped_bam}; \
+        samtools sort -@ {threads} {params.mkdupped_bam} > {params.sorted_mkdupped_bam}; \
+        samtools index -@ {threads} {params.sorted_mkdupped_bam}; \
+        printf "1\\n2\\n3\\n4\\n5\\n6\\n7\\n8\\n9\\n10" > {params.selected_dup_levels_file}; \
+        samtools view {params.sorted_mkdupped_bam} -@ {threads} -D dc:{params.selected_dup_levels_file} -u | samtools sort -@ {threads} - > {params.deduplicated_bam_file_intermediate}; \
+        samtools view -@ {threads} {params.deduplicated_bam_file_intermediate} | awk -F"\\t" '{{print $1}}' > {params.selected_read_names_file}; \
+        samtools view -@ {threads} -D do:{params.selected_read_names_file} -u {params.sorted_mkdupped_bam} | samtools sort -@ {threads} - > {params.low_duplicates_intermediate}; \
+        samtools merge -f -@ {threads} {params.bam_low_dupl_nonsorted} {params.low_duplicates_intermediate} {params.deduplicated_bam_file_intermediate}; \
+        samtools sort -@ {threads} {params.bam_low_dupl_nonsorted} > {output.bam_low_dupl}; \
+        samtools index -@ {threads} {output.bam_low_dupl}; \
+        rm -f {params.mkdupped_bam} {params.sorted_mkdupped_bam} {params.sorted_mkdupped_bai} {params.selected_dup_levels_file}; \
+        rm -f {params.deduplicated_bam_file_intermediate} {params.selected_read_names_file} {params.low_duplicates_intermediate}; \
+        rm -f {params.bam_low_dupl_nonsorted}; \
+        ) \
+        &> {log}"""
+
+rule fastqc_mapped_unique_low_duplicate:
+    """
+        A quality control tool for high throughput sequence data
+    """
+    input:
+        reads = os.path.join(
+                        config["output_dir"],
+                        "samples",
+                        "{sample}",
+                        "map_genome",
+                        "{sample}.Aligned.sortedByCoord.uniquely_mapped.low_duplicate.bam"),
+    output:
+        outdir=directory(os.path.join(
+            config["output_dir"],
+            "samples",
+            "{sample}",
+            "fastqc",
+            "5.mapped_unique_low_duplicate")), 
+    threads: 4
+    resources:
+        mem_mb=10000,
+        runtime=60,
+    singularity:
+        "docker://staphb/fastqc:0.12.1"
+    log:
+        os.path.join(config["local_log"],"fastqc_mapped_unique_low_duplicate__{sample}.log")
+    shell:
+        """(set +o pipefail; mkdir -p {output.outdir}; \
+        fastqc --outdir {output.outdir} \
+        --threads {threads} \
+        {input.reads}) \
+        &> {log}"""

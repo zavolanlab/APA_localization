@@ -1,0 +1,10 @@
+---
+channels:
+  - bioconda
+dependencies:
+  - samtools
+  - bioconda::bedtools
+  - conda-forge::pigz
+  - bioconda::seqkit=2.8.2
+  - bioconda::ucsc-wigtobigwig
+...

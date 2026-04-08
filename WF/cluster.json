@@ -1,0 +1,299 @@
+{
+"__default__":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "06:00:00",
+"threads":"1",
+"mem":"40G",
+"out": "/scicore/home/zavolan/GROUP/RBP_perturbational_networks/wf_runs/v1/output/cluster_log/{rule}.{wildcards}-%j-%N.out"
+},
+"fastqc_input_files":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "03:00:00",
+"threads":"4",
+"mem":"10G"
+},
+"create_index_star_without_GTF":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"12",
+"mem":"70G"
+},
+"map_genome_star_pe":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"8",
+"mem":"50G"
+},
+"samtools_index_mapped":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "02:00:00",
+"threads":"8",
+"mem":"30G"
+},
+"pigz_unmapped_reads":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "02:00:00",
+"threads":"6",
+"mem":"10G"
+},
+"extract_transcripts_as_bed12":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"40G"
+},
+"calculate_TIN_scores":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"4",
+"mem":"50G"
+},
+"separate_bam_into_chromosomes":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"8",
+"mem":"50G"
+},
+"merge_technical_replicates":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"8",
+"mem":"80G"
+},    
+"bamTobed":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"40G"
+},
+"groupBamToBedFile":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"40G"
+},
+"get_read_names_for_each_read_category":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"40G"
+},
+"picard_get_sam_file_for_read_categories":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"4",
+"mem":"30G"
+},
+"samtools_get_bam_file_for_read_categories":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"4",
+"mem":"40G"
+},
+"separate_transcripts_bed12_into_chromosomes":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"20G"
+},
+"calculate_TIN_scores_for_read_categories":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"4",
+"mem":"20G"
+},
+"pigz_category_specific_fastq":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "01:00:00",
+"threads":"6",
+"mem":"15G"
+},
+"fastqc_category_specific_fastq":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "01:00:00",
+"threads":"1",
+"mem":"5G"
+},
+"PAQ_create_coverages":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"4",
+"mem":"10G"
+},
+"separate_BED_pas_into_chromosomes":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"10G"
+},
+"separate_constitutive_exonic_regions_bed_into_chromosomes":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"10G"
+},
+"PAQ_infer_relative_usage":
+{
+"queue":"1week",
+"partition":"scicore",
+"time": "100:00:00",
+"threads":"60",
+"mem":"280G"
+},
+"PAQ_infer_relative_usage_median":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"60",
+"mem":"100G"
+},
+"PAQ_relative_pas_positions":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"20G"
+},
+"PAQ_normalize_expression":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"20G"
+},
+"PAQ_filter_on_expression":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"20G"
+},
+"PAQ_weighted_avg_exon_length":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"1",
+"mem":"20G"
+},
+"megadepth_genes":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"6",
+"mem":"30G"
+},
+"rnaseqc_genes":
+{
+"queue":"30min",
+"partition":"scicore",
+"time": "00:30:00",
+"threads":"1",
+"mem":"3G"
+},
+"aggregate_rnaseqc_results_from_samples":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"5",
+"mem":"40G"
+},
+"get_uniquely_mapped_reads":
+{
+"queue":"30min",
+"partition":"scicore",
+"time": "00:29:00",
+"threads":"6",
+"mem":"40G"
+},
+"get_low_duplicate_bam":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "02:00:00",
+"threads":"8",
+"mem":"40G"
+},
+"FeatureCounts_CDSs":
+{
+"queue":"30min",
+"partition":"scicore",
+"time": "00:29:00",
+"threads":"8",
+"mem":"5G"
+},
+"FeatureCounts_gene_types":
+{
+"queue":"30min",
+"partition":"scicore",
+"time": "00:29:00",
+"threads":"8",
+"mem":"5G"
+},
+"calculate_TIN_scores_for_low_duplicate":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "05:59:00",
+"threads":"15",
+"mem":"50G"
+},
+"fastqc_low_duplicate_bam":
+{
+"queue":"6hours",
+"partition":"scicore",
+"time": "01:00:00",
+"threads":"3",
+"mem":"10G"
+}
+}
