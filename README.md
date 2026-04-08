@@ -26,8 +26,6 @@ For now, only NFYA project code and data are present.
 .
 ├── NFYA_project.ipynb                  # a Jupyter notebook dedicated to NFYA project, includes analysis and workflow configuration
 ├── APA_localization.template.env       # Template for required environment variables/paths
-├── install/
-│   └── environment.yaml                # Conda environment specification for the Jupyter notebook
 └── WF/                                 # Snakemake Workflow Engine
     ├── Snakefile-prepare-faster        # Pipeline Step 1: RNA-seq data processing (alignment, FastQC)
     ├── Snakefile-quantification-faster # Pipeline Step 2: Quantification of gene expression with FeatureCounts, separating .bam files by chromosomes for efficiency, preparation of coverages for PAQR quantification
