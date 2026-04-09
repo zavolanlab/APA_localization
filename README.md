@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1203660686.svg)](https://doi.org/10.5281/zenodo.19482094)
 # APA localization - Analysis and Pipelines
 
 This repository contains the computational workflows and downstream analysis notebooks related to the analysis of alternative polyadenylation isoforms in subcellular compartments.
