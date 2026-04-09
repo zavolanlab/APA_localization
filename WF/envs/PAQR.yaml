@@ -4,6 +4,6 @@ channels:
   - anaconda
   - conda-forge
 dependencies:
-  - htseq
+  - bioconda::htseq
   - numpy
 ...
