@@ -18,6 +18,8 @@ As input for PAQR2, we used human [PolyASite Atlas v3.0](https://academic.oup.co
 
 We further focused on **NFYA** gene and alternative polyadenylation at its terminal exon, in a collaborative project with the [group of Prof. Dr. Paolo Gandellini](https://www.unimi.it/it/ugov/person/paolo-gandellini).
 
+We are also working on **nanopore data processing**.
+
 **Action plan** In general, different sub-projects related to subcellular localization of APA isoforms, will be corresponding to different jupyter notebooks.
 For now, only NFYA project code and data are present.
 
@@ -26,6 +28,7 @@ For now, only NFYA project code and data are present.
 ```text
 .
 ├── NFYA_project.ipynb                  # a Jupyter notebook dedicated to NFYA project, includes analysis and workflow configuration
+├── ONT_analysis.ipynb                  # a Jupyter notebook dedicated to nanopore data processing and analysis
 ├── APA_localization.template.env       # Template for required environment variables/paths
 └── WF/                                 # Snakemake Workflow Engine
     ├── Snakefile-prepare-faster        # Pipeline Step 1: RNA-seq data processing (alignment, FastQC)
