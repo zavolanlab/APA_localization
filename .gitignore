@@ -49,6 +49,12 @@ Thumbs.db
 WF/.java/
 WF/.cache/
 
+# Nextflow temporary files and outputs
+work/
+.nextflow/
+.nextflow.log*
+results/
+
 # Environment and tool caches
 .java/
 .cache/

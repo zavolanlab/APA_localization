@@ -20,8 +20,10 @@ We further focused on **NFYA** gene and alternative polyadenylation at its termi
 
 We are also working on **nanopore data processing**.
 
-**Action plan** In general, different sub-projects related to subcellular localization of APA isoforms, will be corresponding to different jupyter notebooks.
-For now, only NFYA project code and data are present.
+**Action plan** 
+In general, different sub-projects related to subcellular localization of APA isoforms, will be corresponding to different jupyter notebooks.
+
+For now, NFYA project code and data were finalized. ONT nanopore data processing and analysis is ongoing.
 
 ## Repository Structure
 
