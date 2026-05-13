@@ -1,7 +1,9 @@
 ---
 channels:
   - bioconda
+  - conda-forge
 dependencies:
-  - STAR=2.7.11b
+  - bioconda::umi_tools
+  - bioconda::seqkit=2.8.2
   - bioconda::samtools
 ...

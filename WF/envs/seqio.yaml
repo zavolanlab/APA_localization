@@ -1,0 +1,17 @@
+---
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.12
+  - bioconda::bedtools
+  - conda-forge::pandas
+  - conda-forge::biopython
+  - bioconda::htseq
+  - conda-forge::numpy
+  - bioconda::samtools
+  - pip
+  - pip:
+      # This tells pip to install directly from the branches of the GitHub repos
+      - git+https://github.com/zavolanlab/zavolab_pyutils.git@dev
+...
