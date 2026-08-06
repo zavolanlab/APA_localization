@@ -28,8 +28,7 @@ __pycache__/
 # all jupyter notebooks...
 *.ipynb
 # except the currently prepared notebook
-!NFYA_project.ipynb
-!ONT_analysis.ipynb
+!CD47_analysis.ipynb
 
 # ========================
 # 4. Hugging Face Uploading script with FILLED IN token
