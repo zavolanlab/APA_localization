@@ -29,6 +29,8 @@ __pycache__/
 *.ipynb
 # except the currently prepared notebook
 !CD47_analysis.ipynb
+!NFYA_project.ipynb
+!ONT_analysis.ipynb
 
 # ========================
 # 4. Hugging Face Uploading script with FILLED IN token
