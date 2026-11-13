@@ -1,0 +1,6 @@
+18:13:56 === sanity
+18:14:11 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/Total: (41976, 3), log2 TPM, 4 s
+18:15:31 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/fractions: (48998, 24), log2 TPM, 79 s
+18:15:31 === sanity finished in 94 s
+18:15:31 === fit_cohorts
+[2026-11-11T18:17:50.829] error: *** JOB 31375226 ON sca07 CANCELLED AT 2026-11-11T18:17:50 DUE to SIGNAL Terminated ***

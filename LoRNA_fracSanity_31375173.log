@@ -1,0 +1,15 @@
+18:12:27 === prepare
+18:12:27 prepare: done before, skipped
+18:12:27 === prepare finished in 0 s
+18:12:27 === spike_ins
+Traceback (most recent call last):
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/LoRNA_fracSanity_pipeline.py", line 240, in <module>
+    main()
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/LoRNA_fracSanity_pipeline.py", line 235, in main
+    steps[step]()
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/LoRNA_fracSanity_pipeline.py", line 228, in <lambda>
+    steps = {"prepare": lambda: step_prepare(a.outdir, cfg), "spike_ins": lambda: step_spike_ins(a.outdir, cfg),
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/LoRNA_fracSanity_pipeline.py", line 127, in step_spike_ins
+    raise FileNotFoundError(f"{log_final}: run WF/scripts/count_spike_ins.sbatch first")
+FileNotFoundError: /scicore/home/zavolan/GROUP/APA_localization/wf_runs/U2OS_subcellular_fractions_spike_ins/dTotal-DMSO-1/Log.final.out: run WF/scripts/count_spike_ins.sbatch first

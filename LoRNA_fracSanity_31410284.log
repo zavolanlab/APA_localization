@@ -1,0 +1,18 @@
+21:06:03 === fit_cohorts_lowpi
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+21:25:23 F1.pkl: F = 0.0002104 [8.539e-06, 0.001115], identifiable = False, pi = 0.020, n = 41300, 1148 s
+21:25:23 F2.pkl: F = 0.0001964 [8.03e-06, 0.001041], identifiable = False, pi = 0.020, n = 41300, 1123 s
+21:25:23 F3.pkl: F = 0.0001868 [7.682e-06, 0.0009902], identifiable = False, pi = 0.020, n = 41300, 703 s
+21:25:23 F4.pkl: F = 0.0004094 [1.581e-05, 0.002175], identifiable = False, pi = 0.020, n = 41300, 1039 s
+21:33:38 F5.pkl: F = 0.001321 [4.918e-05, 0.007004], identifiable = False, pi = 0.019, n = 41300, 940 s
+21:33:38 F6.pkl: F = 0.6373 [0.6166, 0.6586], identifiable = True, pi = 0.005, n = 41300, 564 s
+21:39:41 F7.pkl: F = 0.5548 [0.5368, 0.5734], identifiable = True, pi = 0.020, n = 41300, 883 s
+21:39:41 F8.pkl: F = 0.3609 [0.3219, 0.3991], identifiable = True, pi = 0.020, n = 41300, 768 s
+21:39:41 === fit_cohorts_lowpi finished in 2018 s

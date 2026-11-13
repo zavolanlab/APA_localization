@@ -1,0 +1,5 @@
+00:31:36 === mass_balance_pooled
+00:31:36 mass_balance_pooled: done before, skipped
+00:31:36 === mass_balance_pooled finished in 0 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+LoRNA_U2OS.fracSanity.ipynb: done in 170 s, status 0

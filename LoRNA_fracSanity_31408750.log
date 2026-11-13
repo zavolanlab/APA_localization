@@ -1,0 +1,95 @@
+21:46:26 === prepare
+21:46:26 prepare: done before, skipped
+21:46:26 === prepare finished in 0 s
+21:46:26 === spike_ins
+21:46:27 spike_ins: SIRV share Total R1 0.0036, Total R2 0.0033, Total R3 0.0031, F1 R1 0.0024, F1 R2 0.0029, F1 R3 0.0020, F2 R1 0.0020, F2 R2 0.0026, F2 R3 0.0023, F3 R1 0.0023, F3 R2 0.0013, F3 R3 0.0017, F4 R1 0.0025, F4 R2 0.0024, F4 R3 0.0022, F5 R1 0.0023, F5 R2 0.0021, F5 R3 0.0023, F6 R1 0.0021, F6 R2 0.0033, F6 R3 0.0032, F7 R1 0.0019, F7 R2 0.0025, F7 R3 0.0038, F8 R1 0.0017, F8 R2 0.0017, F8 R3 0.0026
+21:46:27 spike_ins: mean F_spike per fraction F1 0.120, F2 0.124, F3 0.163, F4 0.104, F5 0.109, F6 0.090, F7 0.115, F8 0.175
+21:46:27 === spike_ins finished in 1 s
+21:46:27 === sanity
+21:46:46 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/Total: done before, skipped
+21:46:46 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/fractions: done before, skipped
+21:46:46 === sanity finished in 20 s
+21:46:46 === fit_cohorts
+21:46:47 F1.pkl: done before, skipped
+21:46:47 F2.pkl: done before, skipped
+21:46:47 F3.pkl: done before, skipped
+21:46:47 F4.pkl: done before, skipped
+21:46:47 F5.pkl: done before, skipped
+21:46:47 F6.pkl: done before, skipped
+21:46:47 F7.pkl: done before, skipped
+21:46:47 F8.pkl: done before, skipped
+21:46:47 === fit_cohorts finished in 1 s
+21:46:47 === fit_replicates
+21:46:48 F1_R1.pkl: done before, skipped
+21:46:48 F1_R2.pkl: done before, skipped
+21:46:48 F1_R3.pkl: done before, skipped
+21:46:48 F2_R1.pkl: done before, skipped
+21:46:48 F2_R2.pkl: done before, skipped
+21:46:48 F2_R3.pkl: done before, skipped
+21:46:48 F3_R1.pkl: done before, skipped
+21:46:48 F3_R2.pkl: done before, skipped
+21:46:48 F3_R3.pkl: done before, skipped
+21:46:48 F4_R1.pkl: done before, skipped
+21:46:48 F4_R2.pkl: done before, skipped
+21:46:48 F4_R3.pkl: done before, skipped
+21:46:48 F5_R1.pkl: done before, skipped
+21:46:48 F5_R2.pkl: done before, skipped
+21:46:48 F5_R3.pkl: done before, skipped
+21:46:48 F6_R1.pkl: done before, skipped
+21:46:48 F6_R2.pkl: done before, skipped
+21:46:48 F6_R3.pkl: done before, skipped
+21:46:48 F7_R1.pkl: done before, skipped
+21:46:48 F7_R2.pkl: done before, skipped
+21:46:48 F7_R3.pkl: done before, skipped
+21:46:48 F8_R1.pkl: done before, skipped
+21:46:48 F8_R2.pkl: done before, skipped
+21:46:48 F8_R3.pkl: done before, skipped
+21:46:48 === fit_replicates finished in 1 s
+21:46:48 === mass_balance
+21:46:48 mass_balance: done before, skipped
+21:46:48 === mass_balance finished in 0 s
+21:46:48 === fit_cohorts_mbprior
+21:46:49 mass-balance prior: F1 Beta(2.4, 311.4), F2 Beta(2.4, 311.4), F3 Beta(1.7, 3.0), F4 Beta(2.4, 311.4), F5 Beta(2.1, 7.9), F6 Beta(1.5, 0.9), F7 Beta(1.5, 0.9), F8 Beta(2.4, 311.4)
+21:46:49 F1.pkl: done before, skipped
+21:46:49 F2.pkl: done before, skipped
+21:46:49 F3.pkl: done before, skipped
+21:46:49 F4.pkl: done before, skipped
+21:46:49 F5.pkl: done before, skipped
+21:46:49 F6.pkl: done before, skipped
+21:46:49 F7.pkl: done before, skipped
+21:46:49 F8.pkl: done before, skipped
+21:46:49 === fit_cohorts_mbprior finished in 1 s
+21:46:49 === fit_cohorts_spikeprior
+21:46:49 spike prior: F1 F 0.120 Beta(68.3, 494.9), F2 F 0.124 Beta(68.0, 473.5), F3 F 0.163 Beta(64.9, 328.4), F4 F 0.104 Beta(69.6, 591.6), F5 F 0.109 Beta(69.1, 554.1), F6 F 0.090 Beta(70.6, 700.4), F7 F 0.115 Beta(68.7, 519.6), F8 F 0.175 Beta(63.9, 295.0)
+22:06:13 F1.pkl: F = 0.08717 [0.06837, 0.1083], identifiable = False, pi = 0.500, n = 41300, 1163 s
+22:15:21 F2.pkl: F = 0.09513 [0.07459, 0.1184], identifiable = False, pi = 0.500, n = 41300, 1711 s
+22:15:21 F3.pkl: F = 0.1182 [0.09254, 0.1479], identifiable = False, pi = 0.500, n = 41300, 1591 s
+22:15:21 F4.pkl: F = 0.07742 [0.06079, 0.09639], identifiable = False, pi = 0.500, n = 41300, 1657 s
+22:25:29 F5.pkl: F = 0.07261 [0.05708, 0.09056], identifiable = False, pi = 0.500, n = 41300, 1156 s
+22:30:00 F6.pkl: F = 0.1729 [0.1366, 0.2144], identifiable = True, pi = 0.017, n = 41300, 998 s
+22:30:00 F7.pkl: F = 0.5175 [0.5007, 0.535], identifiable = True, pi = 0.009, n = 41300, 867 s
+22:30:00 F8.pkl: F = 0.2761 [0.2418, 0.3097], identifiable = True, pi = 0.006, n = 41300, 860 s
+22:30:00 === fit_cohorts_spikeprior finished in 2590 s
+22:30:00 === fit_cohorts_lowpi
+22:30:00 F1.pkl: done before, skipped
+22:30:00 F2.pkl: done before, skipped
+22:30:00 F3.pkl: done before, skipped
+22:30:00 F4.pkl: done before, skipped
+22:30:00 F5.pkl: done before, skipped
+22:30:00 F6.pkl: done before, skipped
+22:30:00 F7.pkl: done before, skipped
+22:30:00 F8.pkl: done before, skipped
+22:30:00 === fit_cohorts_lowpi finished in 1 s
+22:30:00 === fit_cohorts_spikeprior_lowpi
+22:30:01 spike prior: F1 F 0.120 Beta(68.3, 494.9), F2 F 0.124 Beta(68.0, 473.5), F3 F 0.163 Beta(64.9, 328.4), F4 F 0.104 Beta(69.6, 591.6), F5 F 0.109 Beta(69.1, 554.1), F6 F 0.090 Beta(70.6, 700.4), F7 F 0.115 Beta(68.7, 519.6), F8 F 0.175 Beta(63.9, 295.0)
+22:48:43 F1.pkl: F = 0.01731 [0.0136, 0.02178], identifiable = False, pi = 0.020, n = 41300, 1122 s
+22:48:43 F2.pkl: F = 0.01632 [0.01277, 0.02048], identifiable = False, pi = 0.020, n = 41300, 1087 s
+22:48:43 F3.pkl: F = 0.01552 [0.01202, 0.01964], identifiable = False, pi = 0.020, n = 41300, 1118 s
+22:48:43 F4.pkl: F = 0.02881 [0.02254, 0.03587], identifiable = False, pi = 0.020, n = 41300, 957 s
+23:02:35 F5.pkl: F = 0.058 [0.04546, 0.07188], identifiable = False, pi = 0.020, n = 41300, 997 s
+23:03:50 F6.pkl: F = 0.1729 [0.1366, 0.2144], identifiable = True, pi = 0.017, n = 41300, 942 s
+23:03:50 F7.pkl: F = 0.5175 [0.5007, 0.535], identifiable = True, pi = 0.009, n = 41300, 903 s
+23:03:50 F8.pkl: F = 0.2761 [0.2418, 0.3097], identifiable = True, pi = 0.006, n = 41300, 907 s
+23:03:50 === fit_cohorts_spikeprior_lowpi finished in 2030 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+LoRNA_U2OS.fracSanity.ipynb: done in 146 s, status 0

@@ -1,0 +1,53 @@
+23:12:31 === pooled
+23:12:31 pooled counts: Membranes R1 keep 0.636,1.000,0.873, Membranes R2 keep 0.348,0.420,1.000, Membranes R3 keep 0.435,1.000,0.503, Nuclear R1 keep 1.000,0.860, Nuclear R2 keep 1.000,0.578, Nuclear R3 keep 0.825,1.000, Cytosol R1 keep 1.000,0.661,0.808, Cytosol R2 keep 0.325,0.390,1.000, Cytosol R3 keep 0.512,0.304,1.000
+23:12:56 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/pooled: (47627, 9), log2 TPM, 11 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+23:44:46 Membranes.pkl: F = 0.004637 [0.0001706, 0.02449], identifiable = False, pi = 0.500, n = 41053, 1909 s
+23:44:46 Nuclear.pkl: F = 0.001533 [5.694e-05, 0.008131], identifiable = False, pi = 0.500, n = 41053, 1898 s
+23:44:46 Cytosol.pkl: F = 0.8211 [0.7611, 0.868], identifiable = True, pi = 0.249, n = 41053, 1016 s
+23:44:46 Membranes.pkl: F = 0.0002287 [9.21e-06, 0.001212], identifiable = False, pi = 0.020, n = 41053, 1481 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+23:49:29 Nuclear.pkl: F = 0.0009142 [3.426e-05, 0.004847], identifiable = False, pi = 0.020, n = 41053, 1177 s
+23:49:46 Cytosol.pkl: F = 0.683 [0.6609, 0.7059], identifiable = True, pi = 0.020, n = 41053, 729 s
+23:49:46 === pooled finished in 2236 s
+23:49:46 === simulate
+23:49:49 simulation: F1 F 0.120 Beta(1.23, 8.99), F2 F 0.124 Beta(1.25, 8.81), F3 F 0.163 Beta(1.17, 5.65), F4 F 0.104 Beta(1.02, 11.67), F5 F 0.109 Beta(2.54, 33.62), F6 F 0.090 Beta(6.17, 68.08), F7 F 0.115 Beta(3.14, 24.51), F8 F 0.175 Beta(2.75, 18.03), Membranes F 0.406 Beta(0.70, 0.86), Nuclear F 0.213 Beta(1.31, 7.12), Cytosol F 0.381 Beta(3.50, 7.19)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+23:59:37 F1.pkl: F = 0.009836 [0.000362, 0.05108], identifiable = False, pi = 0.324, n = 8494, 588 s
+23:59:37 F2.pkl: F = 0.01206 [0.0004446, 0.06202], identifiable = False, pi = 0.332, n = 8494, 571 s
+23:59:55 F3.pkl: F = 0.01066 [0.0003929, 0.05506], identifiable = False, pi = 0.319, n = 8494, 606 s
+23:59:55 F4.pkl: F = 0.005788 [0.0002131, 0.03031], identifiable = False, pi = 0.093, n = 8494, 378 s
+00:01:51 F5.pkl: F = 0.01454 [0.0005345, 0.07569], identifiable = False, pi = 0.302, n = 8494, 345 s
+00:02:49 F6.pkl: F = 0.549 [0.5036, 0.5731], identifiable = True, pi = 0.016, n = 8494, 209 s
+00:03:06 F7.pkl: F = 0.6372 [0.6165, 0.6587], identifiable = True, pi = 0.253, n = 8494, 209 s
+00:03:38 F8.pkl: F = 0.7914 [0.7594, 0.8631], identifiable = True, pi = 0.500, n = 8494, 223 s
+00:10:17 Membranes.pkl: F = 0.01535 [0.000566, 0.07898], identifiable = False, pi = 0.500, n = 8494, 506 s
+00:10:38 Nuclear.pkl: F = 0.009555 [0.0003515, 0.0498], identifiable = False, pi = 0.239, n = 8494, 469 s
+00:10:38 Cytosol.pkl: F = 0.6408 [0.6168, 0.6983], identifiable = True, pi = 0.037, n = 8494, 213 s
+00:10:38 F1.pkl: F = 0.1212 [0.0919, 0.1719], identifiable = True, pi = 0.000, n = 8494, 314 s
+00:12:48 F2.pkl: F = 0.1379 [0.1058, 0.1946], identifiable = True, pi = 0.035, n = 8494, 369 s
+00:13:27 F3.pkl: F = 0.1691 [0.1451, 0.2013], identifiable = True, pi = 0.022, n = 8494, 275 s
+00:16:33 F4.pkl: F = 0.1152 [0.05917, 0.2112], identifiable = True, pi = 0.005, n = 8494, 376 s
+00:17:09 F5.pkl: F = 0.1346 [0.04446, 0.2515], identifiable = True, pi = 0.000, n = 8494, 391 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.84 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=info.get("pi_max", PI_MAX), n_threads=threads,
+00:18:40 F6.pkl: F = 0.07949 [0.006732, 0.1791], identifiable = False, pi = 0.034, n = 8494, 352 s
+00:20:23 F7.pkl: F = 0.1444 [0.1014, 0.1878], identifiable = True, pi = 0.000, n = 8494, 415 s
+00:22:59 F8.pkl: F = 0.1826 [0.1197, 0.2792], identifiable = True, pi = 0.000, n = 8494, 386 s
+00:22:59 Membranes.pkl: F = 0.3923 [0.3796, 0.4054], identifiable = True, pi = 0.000, n = 8494, 251 s
+00:23:19 Nuclear.pkl: F = 0.2037 [0.1683, 0.2481], identifiable = True, pi = 0.000, n = 8494, 279 s
+00:23:19 Cytosol.pkl: F = 0.3641 [0.3282, 0.4023], identifiable = True, pi = 0.000, n = 8494, 156 s
+00:23:19 === simulate finished in 2012 s

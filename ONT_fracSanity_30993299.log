@@ -1,0 +1,165 @@
+17:40:38 === prepare
+17:40:39 prepare: 31 siCtrl libraries; parsing /scicore/home/zavolan/GROUP/Genomes/homo_sapiens/hg38_v42/gencode.v42.basic.annotation.gtf
+17:41:19 prepare: 27 libraries used; 62696 genes
+17:41:39   read tags Total R1: 13,059,301 reads at 263,405 positions
+17:41:57   read tags Total R2: 11,585,238 reads at 229,725 positions
+17:42:21   read tags Total R3: 15,450,962 reads at 292,489 positions
+17:42:28   read tags ER/TIS: ER 14.07.25: 3,511,272 reads at 144,734 positions
+17:42:28   read tags ER/TIS: TIS 14.07.25: 276,748 reads at 29,353 positions
+17:42:29   read tags ER/TIS: Free 18.07.25: 322,426 reads at 30,567 positions
+17:42:29   read tags ER/TIS: Org2 18.07.25: 99,336 reads at 15,892 positions
+17:42:29   read tags ER/TIS: ER 18.07.25: 164,021 reads at 25,671 positions
+17:42:31   read tags Golgi/PEX: Free 29.09: 942,820 reads at 58,934 positions
+17:42:35   read tags Golgi/PEX: Org2 29.09: 2,448,917 reads at 131,293 positions
+17:42:36   read tags Golgi/PEX: Golgi 29.09: 680,770 reads at 79,952 positions
+17:42:37   read tags Golgi/PEX: PEX 29.09: 781,813 reads at 89,762 positions
+17:42:39   read tags Golgi/PEX: Free 2.10: 1,129,010 reads at 61,245 positions
+17:42:40   read tags Golgi/PEX: Org2 2.10: 728,096 reads at 64,356 positions
+17:42:42   read tags Golgi/PEX: Golgi 2.10: 807,822 reads at 78,725 positions
+17:42:43   read tags Golgi/PEX: PEX 2.10: 563,876 reads at 67,428 positions
+17:42:43   read tags End/TJ: Free 11.09: 268,462 reads at 23,667 positions
+17:42:44   read tags End/TJ: Org2 11.09: 213,318 reads at 28,183 positions
+17:42:44   read tags End/TJ: Endo 11.09: 202,191 reads at 34,175 positions
+17:42:45   read tags End/TJ: TJ 11.09: 324,522 reads at 49,573 positions
+17:42:46   read tags End/TJ: Free 22.09: 434,603 reads at 36,097 positions
+17:42:48   read tags End/TJ: Endo 22.09: 1,449,731 reads at 110,597 positions
+17:42:49   read tags End/TJ: TJ 22.09: 403,771 reads at 61,464 positions
+17:42:49   read tags End/TJ: Free 25.09: 288,442 reads at 31,682 positions
+17:42:50   read tags End/TJ: Org2 25.09: 255,666 reads at 37,807 positions
+17:42:51   read tags End/TJ: Endo 25.09: 588,104 reads at 71,304 positions
+17:42:51   read tags End/TJ: TJ 25.09: 291,872 reads at 49,464 positions
+17:46:28 prepare: 191,539 CS (56,546 with >= 5 reads) in 23,680 genes; classes {'terminal': 37959, 'intronic': 7953, 'exonic': 7751, 'outside': 2883}
+17:46:28 === prepare finished in 350 s
+17:46:28 === sanity
+17:47:02 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/genes/Total: (25518, 3), log2 CPM, 28 s
+17:47:36 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/genes/fractions: (23492, 24), log2 CPM, 35 s
+17:48:37 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/Total: (56329, 3), log2 CPM, 61 s
+17:49:39 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/fractions: (54505, 24), log2 CPM, 61 s
+17:50:56 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/joint: (56546, 27), log2 CPM, 77 s
+17:50:56 === sanity finished in 268 s
+17:50:56 === fit_cohorts
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+18:05:38 ER_TIS_ER.pkl: F = 0.008281 [0.0003056, 0.04265], identifiable = False, pi = 0.094, n = 21848, 880 s
+18:05:38 ER_TIS_TIS.pkl: F = 0.07237 [0.003363, 0.2161], identifiable = False, pi = 0.036, n = 21848, 859 s
+18:05:38 ER_TIS_Free.pkl: F = 0.5185 [0.5002, 0.5592], identifiable = True, pi = 0.008, n = 21848, 426 s
+18:05:38 ER_TIS_Org2.pkl: F = 0.02118 [0.0007986, 0.09958], identifiable = False, pi = 0.010, n = 21848, 864 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+18:08:05 Golgi_PEX_Free.pkl: F = 0.04623 [0.001864, 0.1775], identifiable = False, pi = 0.122, n = 21848, 1028 s
+18:08:05 Golgi_PEX_Org2.pkl: F = 0.002418 [8.949e-05, 0.01264], identifiable = False, pi = 0.500, n = 21848, 776 s
+18:08:05 Golgi_PEX_Golgi.pkl: F = 0.001062 [3.978e-05, 0.005553], identifiable = False, pi = 0.500, n = 21848, 675 s
+18:08:05 Golgi_PEX_PEX.pkl: F = 0.002213 [8.228e-05, 0.0114], identifiable = False, pi = 0.500, n = 21848, 791 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+18:10:41 End_TJ_Free.pkl: F = 0.02701 [0.001098, 0.104], identifiable = False, pi = 0.079, n = 21848, 758 s
+18:14:53 End_TJ_Org2.pkl: F = 0.002669 [9.872e-05, 0.01398], identifiable = False, pi = 0.500, n = 21848, 761 s
+18:14:53 End_TJ_Endo.pkl: F = 0.003599 [0.0001353, 0.01749], identifiable = False, pi = 0.500, n = 21848, 443 s
+18:15:49 End_TJ_TJ.pkl: F = 0.001473 [5.486e-05, 0.007685], identifiable = False, pi = 0.500, n = 21848, 700 s
+18:41:33 ER_TIS_ER.pkl: F = 0.001698 [6.299e-05, 0.00895], identifiable = False, pi = 0.500, n = 54288, 2177 s
+18:41:33 ER_TIS_TIS.pkl: F = 0.008903 [0.0003302, 0.0448], identifiable = False, pi = 0.500, n = 54288, 2166 s
+18:41:33 ER_TIS_Free.pkl: F = 0.03696 [0.001622, 0.1242], identifiable = False, pi = 0.023, n = 54288, 1829 s
+18:41:33 ER_TIS_Org2.pkl: F = 0.003879 [0.0001434, 0.02011], identifiable = False, pi = 0.002, n = 54288, 1925 s
+18:43:45 Golgi_PEX_Free.pkl: F = 0.003201 [0.0001182, 0.01673], identifiable = False, pi = 0.500, n = 54288, 1984 s
+18:43:45 Golgi_PEX_Org2.pkl: F = 0.001054 [3.94e-05, 0.005559], identifiable = False, pi = 0.500, n = 54288, 1761 s
+18:44:31 Golgi_PEX_Golgi.pkl: F = 0.0004283 [1.652e-05, 0.002263], identifiable = False, pi = 0.500, n = 54288, 1777 s
+18:46:07 Golgi_PEX_PEX.pkl: F = 0.0006908 [2.612e-05, 0.003643], identifiable = False, pi = 0.500, n = 54288, 1817 s
+18:54:55 End_TJ_Free.pkl: F = 0.002116 [7.84e-05, 0.01108], identifiable = False, pi = 0.500, n = 54288, 1128 s
+19:00:55 End_TJ_Org2.pkl: F = 0.001158 [4.325e-05, 0.00612], identifiable = False, pi = 0.500, n = 54288, 1244 s
+19:00:55 End_TJ_Endo.pkl: F = 0.0008567 [3.224e-05, 0.004489], identifiable = False, pi = 0.500, n = 54288, 1013 s
+19:00:55 End_TJ_TJ.pkl: F = 0.0005346 [2.04e-05, 0.002829], identifiable = False, pi = 0.500, n = 54288, 1087 s
+19:00:55 === fit_cohorts finished in 4199 s
+19:00:55 === fit_replicates
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+19:19:14 ER_TIS_ER_14_07_25.pkl: F = 0.02277 [0.000852, 0.1101], identifiable = False, pi = 0.170, n = 21848, 1098 s
+19:19:14 ER_TIS_TIS_14_07_25.pkl: F = 0.06385 [0.00284, 0.2028], identifiable = False, pi = 0.038, n = 21848, 1061 s
+19:19:14 ER_TIS_Free_18_07_25.pkl: F = 0.5177 [0.4939, 0.5455], identifiable = True, pi = 0.008, n = 21848, 422 s
+19:19:14 ER_TIS_Org2_18_07_25.pkl: F = 0.02032 [0.0007648, 0.09596], identifiable = False, pi = 0.010, n = 21848, 870 s
+19:19:14 ER_TIS_ER_18_07_25.pkl: F = 0.00631 [0.0002334, 0.0323], identifiable = False, pi = 0.000, n = 21848, 791 s
+19:19:14 Golgi_PEX_Free_29_09.pkl: F = 0.0979 [0.004422, 0.2976], identifiable = False, pi = 0.089, n = 21848, 1002 s
+19:19:14 Golgi_PEX_Org2_29_09.pkl: F = 0.002415 [8.936e-05, 0.01262], identifiable = False, pi = 0.500, n = 21848, 1017 s
+19:19:14 Golgi_PEX_Golgi_29_09.pkl: F = 0.0006903 [2.612e-05, 0.003631], identifiable = False, pi = 0.500, n = 21848, 704 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:338: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+19:22:03 Golgi_PEX_PEX_29_09.pkl: F = 0.001236 [4.621e-05, 0.006469], identifiable = False, pi = 0.500, n = 21848, 846 s
+19:29:36 Golgi_PEX_Free_2_10.pkl: F = 0.0283 [0.001091, 0.1235], identifiable = False, pi = 0.067, n = 21848, 1016 s
+19:29:36 Golgi_PEX_Org2_2_10.pkl: F = 0.003049 [0.0001127, 0.01594], identifiable = False, pi = 0.500, n = 21848, 806 s
+19:29:38 Golgi_PEX_Golgi_2_10.pkl: F = 0.001108 [4.144e-05, 0.005809], identifiable = False, pi = 0.500, n = 21848, 852 s
+19:30:20 Golgi_PEX_PEX_2_10.pkl: F = 0.001384 [5.168e-05, 0.007195], identifiable = False, pi = 0.500, n = 21848, 762 s
+19:31:40 End_TJ_Free_11_09.pkl: F = 0.3959 [0.3097, 0.4627], identifiable = True, pi = 0.016, n = 21848, 827 s
+19:32:14 End_TJ_Org2_11_09.pkl: F = 0.003807 [0.0001406, 0.01988], identifiable = False, pi = 0.018, n = 21848, 817 s
+19:33:17 End_TJ_Endo_11_09.pkl: F = 0.001613 [5.995e-05, 0.008469], identifiable = False, pi = 0.500, n = 21848, 844 s
+19:35:15 End_TJ_TJ_11_09.pkl: F = 0.002666 [9.878e-05, 0.01386], identifiable = False, pi = 0.500, n = 21848, 792 s
+19:41:57 End_TJ_Free_22_09.pkl: F = 0.0233 [0.0009018, 0.1009], identifiable = False, pi = 0.043, n = 21848, 864 s
+19:41:57 End_TJ_Endo_22_09.pkl: F = 0.001292 [4.822e-05, 0.006756], identifiable = False, pi = 0.500, n = 21848, 741 s
+19:42:13 End_TJ_TJ_22_09.pkl: F = 0.001492 [5.561e-05, 0.007769], identifiable = False, pi = 0.500, n = 21848, 755 s
+19:43:12 End_TJ_Free_25_09.pkl: F = 0.03166 [0.001225, 0.1356], identifiable = False, pi = 0.035, n = 21848, 772 s
+19:44:46 End_TJ_Org2_25_09.pkl: F = 0.001658 [6.155e-05, 0.008737], identifiable = False, pi = 0.500, n = 21848, 786 s
+19:44:46 End_TJ_Endo_25_09.pkl: F = 0.001424 [5.317e-05, 0.007415], identifiable = False, pi = 0.500, n = 21848, 679 s
+19:45:29 End_TJ_TJ_25_09.pkl: F = 0.001166 [4.358e-05, 0.006134], identifiable = False, pi = 0.500, n = 21848, 732 s
+19:45:29 === fit_replicates finished in 2675 s
+19:45:29 === usage
+19:45:42 usage: 50,531 CS tests in 10,479 genes
+19:46:35 usage ER/TIS: ER: 50,531 tests, padj < 0.05: 35
+19:47:27 usage ER/TIS: TIS: 50,531 tests, padj < 0.05: 115
+19:48:20 usage ER/TIS: Free: 50,531 tests, padj < 0.05: 220
+19:49:12 usage ER/TIS: Org2: 50,531 tests, padj < 0.05: 19
+19:50:06 usage Golgi/PEX: Free: 50,531 tests, padj < 0.05: 34
+19:50:58 usage Golgi/PEX: Org2: 50,531 tests, padj < 0.05: 81
+19:51:51 usage Golgi/PEX: Golgi: 50,531 tests, padj < 0.05: 1,564
+19:52:42 usage Golgi/PEX: PEX: 50,531 tests, padj < 0.05: 2,338
+19:53:35 usage End/TJ: Free: 50,531 tests, padj < 0.05: 25
+19:54:26 usage End/TJ: Org2: 50,531 tests, padj < 0.05: 26
+19:55:17 usage End/TJ: Endo: 50,531 tests, padj < 0.05: 1,795
+19:56:11 usage End/TJ: TJ: 50,531 tests, padj < 0.05: 4,059
+19:56:13 APA: log2 mean 3' UTR length for 7,854 genes
+19:56:33 APA ER/TIS: ER: 7,854 genes, {'NS': 7841, 'shortening': 12, 'lengthening': 1}
+19:57:14 APA ER/TIS: TIS: 7,854 genes, {'NS': 7798, 'shortening': 56}
+19:57:55 APA ER/TIS: Free: 7,854 genes, {'NS': 7849, 'lengthening': 5}
+19:58:36 APA ER/TIS: Org2: 7,854 genes, {'NS': 7853, 'lengthening': 1}
+19:59:17 APA Golgi/PEX: Free: 7,854 genes, {'NS': 7853, 'lengthening': 1}
+19:59:58 APA Golgi/PEX: Org2: 7,854 genes, {'NS': 7848, 'lengthening': 5, 'shortening': 1}
+20:00:39 APA Golgi/PEX: Golgi: 7,854 genes, {'NS': 7565, 'lengthening': 243, 'shortening': 46}
+20:01:21 APA Golgi/PEX: PEX: 7,854 genes, {'NS': 7462, 'lengthening': 317, 'shortening': 75}
+20:02:03 APA End/TJ: Free: 7,854 genes, {'NS': 7852, 'lengthening': 1, 'shortening': 1}
+20:02:45 APA End/TJ: Org2: 7,854 genes, {'NS': 7851, 'shortening': 2, 'lengthening': 1}
+20:03:26 APA End/TJ: Endo: 7,854 genes, {'NS': 7636, 'lengthening': 171, 'shortening': 47}
+20:04:08 APA End/TJ: TJ: 7,854 genes, {'NS': 7337, 'lengthening': 384, 'shortening': 133}
+20:04:46 IPA ER/TIS: ER: 3,204 genes, padj < 0.05: 0
+20:05:03 IPA ER/TIS: TIS: 3,204 genes, padj < 0.05: 0
+20:05:21 IPA ER/TIS: Free: 3,204 genes, padj < 0.05: 14
+20:05:38 IPA ER/TIS: Org2: 3,204 genes, padj < 0.05: 0
+20:05:56 IPA Golgi/PEX: Free: 3,204 genes, padj < 0.05: 1
+20:06:13 IPA Golgi/PEX: Org2: 3,204 genes, padj < 0.05: 46
+20:06:31 IPA Golgi/PEX: Golgi: 3,204 genes, padj < 0.05: 375
+20:06:48 IPA Golgi/PEX: PEX: 3,204 genes, padj < 0.05: 464
+20:07:06 IPA End/TJ: Free: 3,204 genes, padj < 0.05: 6
+20:07:23 IPA End/TJ: Org2: 3,204 genes, padj < 0.05: 17
+20:07:40 IPA End/TJ: Endo: 3,204 genes, padj < 0.05: 354
+20:07:58 IPA End/TJ: TJ: 3,204 genes, padj < 0.05: 607
+20:07:58 === usage finished in 1348 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+[2026-11-10T20:38:34.134] error: *** JOB 30993299 ON sca17 CANCELLED AT 2026-11-10T20:38:34 DUE to SIGNAL Terminated ***

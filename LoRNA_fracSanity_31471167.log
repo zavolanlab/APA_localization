@@ -1,0 +1,5 @@
+00:25:49 === mass_balance_pooled
+00:26:02 mass_balance_pooled: Membranes 0.201, Nuclear 0.147, Cytosol 0.765; sum 1.113
+00:26:02 === mass_balance_pooled finished in 13 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+LoRNA_U2OS.fracSanity.ipynb: done in 174 s, status 0

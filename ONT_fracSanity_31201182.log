@@ -1,0 +1,40 @@
+10:53:58 === prepare
+10:53:58 prepare: done before, skipped
+10:53:58 === prepare finished in 0 s
+10:53:58 === prepare_cs
+10:54:45   read tags Total R1: 13,059,301 reads at 263,405 positions
+10:55:03   read tags Total R2: 11,585,238 reads at 229,725 positions
+10:55:27   read tags Total R3: 15,450,962 reads at 292,489 positions
+10:55:33   read tags ER/TIS: ER 14.07.25: 3,511,272 reads at 144,734 positions
+10:55:33   read tags ER/TIS: TIS 14.07.25: 276,748 reads at 29,353 positions
+10:55:34   read tags ER/TIS: Free 18.07.25: 322,426 reads at 30,567 positions
+10:55:34   read tags ER/TIS: Org2 18.07.25: 99,336 reads at 15,892 positions
+10:55:34   read tags ER/TIS: ER 18.07.25: 164,021 reads at 25,671 positions
+10:55:36   read tags Golgi/PEX: Free 29.09: 942,820 reads at 58,934 positions
+10:55:40   read tags Golgi/PEX: Org2 29.09: 2,448,917 reads at 131,293 positions
+10:55:41   read tags Golgi/PEX: Golgi 29.09: 680,770 reads at 79,952 positions
+10:55:42   read tags Golgi/PEX: PEX 29.09: 781,813 reads at 89,762 positions
+10:55:44   read tags Golgi/PEX: Free 2.10: 1,129,010 reads at 61,245 positions
+10:55:45   read tags Golgi/PEX: Org2 2.10: 728,096 reads at 64,356 positions
+10:55:47   read tags Golgi/PEX: Golgi 2.10: 807,822 reads at 78,725 positions
+10:55:48   read tags Golgi/PEX: PEX 2.10: 563,876 reads at 67,428 positions
+10:55:48   read tags End/TJ: Free 11.09: 268,462 reads at 23,667 positions
+10:55:49   read tags End/TJ: Org2 11.09: 213,318 reads at 28,183 positions
+10:55:49   read tags End/TJ: Endo 11.09: 202,191 reads at 34,175 positions
+10:55:50   read tags End/TJ: TJ 11.09: 324,522 reads at 49,573 positions
+10:55:50   read tags End/TJ: Free 22.09: 434,603 reads at 36,097 positions
+10:55:53   read tags End/TJ: Endo 22.09: 1,449,731 reads at 110,597 positions
+10:55:53   read tags End/TJ: TJ 22.09: 403,771 reads at 61,464 positions
+10:55:54   read tags End/TJ: Free 25.09: 288,442 reads at 31,682 positions
+10:55:54   read tags End/TJ: Org2 25.09: 255,666 reads at 37,807 positions
+10:55:55   read tags End/TJ: Endo 25.09: 588,104 reads at 71,304 positions
+10:55:56   read tags End/TJ: TJ 25.09: 291,872 reads at 49,464 positions
+Traceback (most recent call last):
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py", line 494, in <module>
+    main()
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py", line 479, in main
+    step_prepare_cs(a.outdir, cfg)
+  File "/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py", line 310, in step_prepare_cs
+    assert cl["cs_id"].is_unique
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError

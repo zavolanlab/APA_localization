@@ -25,12 +25,8 @@ data/
 # Python compiled bytecode
 __pycache__/
 *.py[cod]
-# all jupyter notebooks...
-*.ipynb
-# except the currently prepared notebook
-!CD47_analysis.ipynb
-!NFYA_project.ipynb
-!ONT_analysis.ipynb
+# old jupyter notebook
+main_WF.ipynb
 
 # ========================
 # 4. Hugging Face Uploading script with FILLED IN token

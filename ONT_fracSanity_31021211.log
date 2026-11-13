@@ -1,0 +1,66 @@
+20:53:49 === prepare
+20:53:49 prepare: done before, skipped
+20:53:49 === prepare finished in 0 s
+20:53:49 === sanity
+20:54:04 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/genes/Total: done before, skipped
+20:54:04 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/genes/fractions: done before, skipped
+20:54:04 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/Total: done before, skipped
+20:54:04 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/fractions: done before, skipped
+20:54:04 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_ONT_organelles_siCtrl/sanity/cs/joint: done before, skipped
+20:54:04 === sanity finished in 16 s
+20:54:04 === fit_cohorts
+20:54:05 ER_TIS_ER.pkl: done before, skipped
+20:54:05 ER_TIS_TIS.pkl: done before, skipped
+20:54:05 ER_TIS_Free.pkl: done before, skipped
+20:54:05 ER_TIS_Org2.pkl: done before, skipped
+20:54:05 Golgi_PEX_Free.pkl: done before, skipped
+20:54:06 Golgi_PEX_Org2.pkl: done before, skipped
+20:54:06 Golgi_PEX_Golgi.pkl: done before, skipped
+20:54:06 Golgi_PEX_PEX.pkl: done before, skipped
+20:54:06 End_TJ_Free.pkl: done before, skipped
+20:54:06 End_TJ_Org2.pkl: done before, skipped
+20:54:06 End_TJ_Endo.pkl: done before, skipped
+20:54:06 End_TJ_TJ.pkl: done before, skipped
+20:54:06 ER_TIS_ER.pkl: done before, skipped
+20:54:06 ER_TIS_TIS.pkl: done before, skipped
+20:54:06 ER_TIS_Free.pkl: done before, skipped
+20:54:06 ER_TIS_Org2.pkl: done before, skipped
+20:54:06 Golgi_PEX_Free.pkl: done before, skipped
+20:54:06 Golgi_PEX_Org2.pkl: done before, skipped
+20:54:06 Golgi_PEX_Golgi.pkl: done before, skipped
+20:54:06 Golgi_PEX_PEX.pkl: done before, skipped
+20:54:06 End_TJ_Free.pkl: done before, skipped
+20:54:06 End_TJ_Org2.pkl: done before, skipped
+20:54:06 End_TJ_Endo.pkl: done before, skipped
+20:54:06 End_TJ_TJ.pkl: done before, skipped
+20:54:06 === fit_cohorts finished in 2 s
+20:54:06 === fit_replicates
+20:54:06 ER_TIS_ER_14_07_25.pkl: done before, skipped
+20:54:06 ER_TIS_TIS_14_07_25.pkl: done before, skipped
+20:54:06 ER_TIS_Free_18_07_25.pkl: done before, skipped
+20:54:06 ER_TIS_Org2_18_07_25.pkl: done before, skipped
+20:54:06 ER_TIS_ER_18_07_25.pkl: done before, skipped
+20:54:06 Golgi_PEX_Free_29_09.pkl: done before, skipped
+20:54:06 Golgi_PEX_Org2_29_09.pkl: done before, skipped
+20:54:06 Golgi_PEX_Golgi_29_09.pkl: done before, skipped
+20:54:06 Golgi_PEX_PEX_29_09.pkl: done before, skipped
+20:54:06 Golgi_PEX_Free_2_10.pkl: done before, skipped
+20:54:06 Golgi_PEX_Org2_2_10.pkl: done before, skipped
+20:54:06 Golgi_PEX_Golgi_2_10.pkl: done before, skipped
+20:54:06 Golgi_PEX_PEX_2_10.pkl: done before, skipped
+20:54:06 End_TJ_Free_11_09.pkl: done before, skipped
+20:54:06 End_TJ_Org2_11_09.pkl: done before, skipped
+20:54:06 End_TJ_Endo_11_09.pkl: done before, skipped
+20:54:06 End_TJ_TJ_11_09.pkl: done before, skipped
+20:54:06 End_TJ_Free_22_09.pkl: done before, skipped
+20:54:06 End_TJ_Endo_22_09.pkl: done before, skipped
+20:54:06 End_TJ_TJ_22_09.pkl: done before, skipped
+20:54:06 End_TJ_Free_25_09.pkl: done before, skipped
+20:54:06 End_TJ_Org2_25_09.pkl: done before, skipped
+20:54:06 End_TJ_Endo_25_09.pkl: done before, skipped
+20:54:06 End_TJ_TJ_25_09.pkl: done before, skipped
+20:54:06 === fit_replicates finished in 1 s
+20:54:06 === usage
+20:54:08 === usage finished in 1 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+ONT_organelles.fracSanity.ipynb: done in 1823 s, status 0

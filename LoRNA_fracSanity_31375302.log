@@ -1,0 +1,70 @@
+18:18:10 === sanity
+18:18:22 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/Total: done before, skipped
+18:18:22 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_LoRNA_U2OS/sanity/genes/fractions: done before, skipped
+18:18:22 === sanity finished in 11 s
+18:18:22 === fit_cohorts
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+18:40:19 F1.pkl: F = 0.003429 [0.0001262, 0.01814], identifiable = False, pi = 0.500, n = 41300, 1316 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+18:41:02 F2.pkl: F = 0.004469 [0.0001643, 0.02357], identifiable = False, pi = 0.500, n = 41300, 1360 s
+18:41:46 F3.pkl: F = 0.004851 [0.0001784, 0.02555], identifiable = False, pi = 0.500, n = 41300, 1404 s
+18:41:46 F4.pkl: F = 0.003276 [0.0001207, 0.01732], identifiable = False, pi = 0.500, n = 41300, 1339 s
+18:57:23 F5.pkl: F = 0.002361 [8.723e-05, 0.01247], identifiable = False, pi = 0.500, n = 41300, 1025 s
+18:57:23 F6.pkl: F = 0.6373 [0.6166, 0.6586], identifiable = True, pi = 0.005, n = 41300, 703 s
+18:57:23 F7.pkl: F = 0.5548 [0.5368, 0.5734], identifiable = True, pi = 0.031, n = 41300, 742 s
+18:57:23 F8.pkl: F = 0.6878 [0.6399, 0.7511], identifiable = True, pi = 0.500, n = 41300, 722 s
+18:57:24 === fit_cohorts finished in 2342 s
+18:57:24 === fit_replicates
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+19:21:52 F1_R1.pkl: F = 0.008859 [0.0003255, 0.04647], identifiable = False, pi = 0.500, n = 41300, 1468 s
+19:22:04 F1_R2.pkl: F = 0.00963 [0.000354, 0.05029], identifiable = False, pi = 0.500, n = 41300, 1479 s
+19:22:04 F1_R3.pkl: F = 0.005812 [0.0002139, 0.03052], identifiable = False, pi = 0.500, n = 41300, 1475 s
+19:22:32 F2_R1.pkl: F = 0.01639 [0.0006038, 0.08476], identifiable = False, pi = 0.500, n = 41300, 1507 s
+19:47:48 F2_R2.pkl: F = 0.01486 [0.0005471, 0.07668], identifiable = False, pi = 0.500, n = 41300, 1556 s
+19:47:48 F2_R3.pkl: F = 0.009784 [0.0003601, 0.05076], identifiable = False, pi = 0.500, n = 41300, 1544 s
+19:47:48 F3_R1.pkl: F = 0.02002 [0.0007388, 0.1025], identifiable = False, pi = 0.500, n = 41300, 1531 s
+19:48:21 F3_R2.pkl: F = 0.01404 [0.0005169, 0.07258], identifiable = False, pi = 0.500, n = 41300, 1548 s
+20:13:40 F3_R3.pkl: F = 0.009601 [0.0003533, 0.04994], identifiable = False, pi = 0.500, n = 41300, 1566 s
+20:13:40 F4_R1.pkl: F = 0.006798 [0.0002499, 0.03566], identifiable = False, pi = 0.500, n = 41300, 1552 s
+20:13:40 F4_R2.pkl: F = 0.004823 [0.0001772, 0.0255], identifiable = False, pi = 0.234, n = 41300, 1515 s
+20:13:40 F4_R3.pkl: F = 0.004527 [0.0001662, 0.02406], identifiable = False, pi = 0.320, n = 41300, 1501 s
+20:33:10 F5_R1.pkl: F = 0.006683 [0.0002495, 0.03298], identifiable = False, pi = 0.500, n = 41300, 1208 s
+20:37:30 F5_R2.pkl: F = 0.005155 [0.0001896, 0.02707], identifiable = False, pi = 0.021, n = 41300, 1449 s
+20:40:47 F5_R3.pkl: F = 0.007298 [0.0002685, 0.03809], identifiable = False, pi = 0.500, n = 41300, 1631 s
+20:40:47 F6_R1.pkl: F = 0.8409 [0.8137, 0.869], identifiable = True, pi = 0.001, n = 41300, 761 s
+20:52:20 F6_R2.pkl: F = 0.01833 [0.0007293, 0.07492], identifiable = False, pi = 0.000, n = 41300, 1558 s
+20:54:44 F6_R3.pkl: F = 0.3351 [0.251, 0.4046], identifiable = True, pi = 0.000, n = 41300, 1293 s
+20:54:48 F7_R1.pkl: F = 0.5945 [0.5752, 0.6145], identifiable = True, pi = 0.000, n = 41300, 718 s
+20:54:48 F7_R2.pkl: F = 0.6373 [0.6166, 0.6586], identifiable = True, pi = 0.009, n = 41300, 766 s
+21:00:47 F7_R3.pkl: F = 0.7841 [0.7582, 0.8108], identifiable = True, pi = 0.249, n = 41300, 679 s
+21:03:49 F8_R1.pkl: F = 0.783 [0.7276, 0.811], identifiable = True, pi = 0.027, n = 41300, 689 s
+21:04:45 F8_R2.pkl: F = 0.9656 [0.9341, 0.9983], identifiable = True, pi = 0.500, n = 41300, 672 s
+21:04:45 F8_R3.pkl: F = 0.7907 [0.7333, 0.8635], identifiable = True, pi = 0.500, n = 41300, 591 s
+21:04:45 === fit_replicates finished in 7642 s
+21:04:45 === mass_balance
+21:04:47 mass_balance: done before, skipped
+21:04:47 === mass_balance finished in 2 s
+21:04:47 === fit_cohorts_mbprior
+21:04:49 mass-balance prior: F1 Beta(2.4, 311.4), F2 Beta(2.4, 311.4), F3 Beta(1.7, 3.0), F4 Beta(2.4, 311.4), F5 Beta(2.1, 7.9), F6 Beta(1.5, 0.9), F7 Beta(1.5, 0.9), F8 Beta(2.4, 311.4)
+21:26:37 F1.pkl: F = 0.004016 [0.0007446, 0.01197], identifiable = False, pi = 0.500, n = 41300, 1306 s
+21:27:28 F2.pkl: F = 0.004411 [0.0008174, 0.01315], identifiable = False, pi = 0.500, n = 41300, 1357 s
+21:28:24 F3.pkl: F = 0.00979 [0.00116, 0.03478], identifiable = False, pi = 0.500, n = 41300, 1413 s
+21:28:24 F4.pkl: F = 0.003946 [0.0007315, 0.01175], identifiable = False, pi = 0.500, n = 41300, 1320 s
+21:44:45 F5.pkl: F = 0.005766 [0.0008732, 0.01864], identifiable = False, pi = 0.500, n = 41300, 1088 s
+21:44:45 F6.pkl: F = 0.6373 [0.6166, 0.6586], identifiable = True, pi = 0.005, n = 41300, 718 s
+21:44:45 F7.pkl: F = 0.5548 [0.5368, 0.5734], identifiable = True, pi = 0.031, n = 41300, 759 s
+21:44:45 F8.pkl: F = 0.1771 [0.1293, 0.2218], identifiable = True, pi = 0.000, n = 41300, 834 s
+21:44:45 === fit_cohorts_mbprior finished in 2398 s

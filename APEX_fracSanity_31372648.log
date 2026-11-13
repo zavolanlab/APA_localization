@@ -1,0 +1,113 @@
+17:30:01 === prepare
+17:30:49 prepare: 40 samples (41 libraries); 62696 genes; 6,034 tandem PAS in 1,881 terminal exons (1,835 exons with missing values left out), 5,792 with >= 5
+17:30:50 === prepare finished in 48 s
+17:30:50 === complexity
+17:42:35 complexity: 41 libraries
+17:42:35 === complexity finished in 705 s
+17:42:35 === sanity
+17:42:54 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_APEX_seq_Fazal2019/sanity/genes/Total: (31593, 18), log2 TPM, 5 s
+17:43:06 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_APEX_seq_Fazal2019/sanity/genes/fractions: (39711, 22), log2 TPM, 12 s
+17:43:07 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_APEX_seq_Fazal2019/sanity/pas/Total: (5735, 18), log2 CPM, 1 s
+17:43:08 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_APEX_seq_Fazal2019/sanity/pas/fractions: (5769, 22), log2 CPM, 2 s
+17:43:11 sanity /scicore/home/zavolan/GROUP/APA_localization/wf_runs/Sanity_utils_APEX_seq_Fazal2019/sanity/pas/joint: (5792, 40), log2 CPM, 2 s
+17:43:11 === sanity finished in 36 s
+17:43:11 === fit_cohorts
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+17:58:34 APEX_NLS.pkl: F = 0.0006977 [2.636e-05, 0.003697], identifiable = False, pi = 0.331, n = 29966, 923 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.08 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+18:04:00 APEX_NIK.pkl: F = 0.0316 [0.001654, 0.08868], identifiable = False, pi = 0.119, n = 29966, 1249 s
+18:04:00 APEX_LMA.pkl: F = 0.0004737 [1.817e-05, 0.002513], identifiable = False, pi = 0.294, n = 29966, 884 s
+18:04:00 APEX_NucPore.pkl: F = 0.004025 [0.0001486, 0.02097], identifiable = False, pi = 0.131, n = 29966, 1240 s
+18:16:16 APEX_NES.pkl: F = 0.0113 [0.0004157, 0.05858], identifiable = False, pi = 0.392, n = 29966, 1101 s
+18:16:16 APEX_ERM.pkl: F = 0.002427 [9.228e-05, 0.01149], identifiable = False, pi = 0.029, n = 29966, 951 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, pi_max=PI_MAX, n_threads=threads, keep_gene_posterior=False, verbose=False)
+18:29:14 APEX_KDEL.pkl: F = 0.006381 [0.0002354, 0.03302], identifiable = False, pi = 0.218, n = 29966, 1523 s
+18:29:14 APEX_OMM.pkl: F = 0.0006085 [2.311e-05, 0.003224], identifiable = False, pi = 0.161, n = 29966, 1039 s
+18:34:56 APEX_MITO.pkl: F = 0.009818 [0.0003603, 0.05172], identifiable = False, pi = 0.156, n = 29966, 1231 s
+18:34:56 Fractionation_Nuc.pkl: F = 0.001008 [3.772e-05, 0.00534], identifiable = False, pi = 0.500, n = 29966, 1044 s
+18:41:22 Fractionation_Cyto.pkl: F = 0.01391 [0.0005158, 0.06978], identifiable = False, pi = 0.500, n = 29966, 1202 s
+18:41:22 APEX_NLS.pkl: F = 0.002415 [8.914e-05, 0.01278], identifiable = False, pi = 0.324, n = 5712, 226 s
+18:41:22 APEX_NIK.pkl: F = 0.006503 [0.0002397, 0.03375], identifiable = False, pi = 0.500, n = 5712, 227 s
+18:41:22 APEX_LMA.pkl: F = 0.002795 [0.0001031, 0.01474], identifiable = False, pi = 0.303, n = 5712, 204 s
+18:41:22 APEX_NucPore.pkl: F = 0.113 [0.004737, 0.3725], identifiable = False, pi = 0.500, n = 5712, 282 s
+18:41:22 APEX_NES.pkl: F = 0.001681 [6.237e-05, 0.008854], identifiable = False, pi = 0.500, n = 5712, 251 s
+18:41:22 APEX_ERM.pkl: F = 0.02261 [0.0008739, 0.09747], identifiable = False, pi = 0.500, n = 5712, 233 s
+18:43:43 APEX_KDEL.pkl: F = 0.004753 [0.0001749, 0.02501], identifiable = False, pi = 0.469, n = 5712, 245 s
+18:44:35 APEX_OMM.pkl: F = 0.004309 [0.0001593, 0.02227], identifiable = False, pi = 0.500, n = 5712, 219 s
+18:45:30 APEX_MITO.pkl: F = 0.003798 [0.0001397, 0.02014], identifiable = False, pi = 0.303, n = 5712, 272 s
+18:45:52 Fractionation_Nuc.pkl: F = 0.002156 [7.974e-05, 0.01141], identifiable = False, pi = 0.350, n = 5712, 270 s
+18:46:26 Fractionation_Cyto.pkl: F = 0.007142 [0.0002634, 0.03703], identifiable = False, pi = 0.500, n = 5712, 163 s
+18:46:26 === fit_cohorts finished in 3795 s
+18:46:26 === fit_replicates
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+19:04:59 APEX_NLS_T1.pkl: F = 0.0009792 [3.665e-05, 0.00518], identifiable = False, pi = 0.382, n = 29966, 1113 s
+19:04:59 APEX_NLS_T2.pkl: F = 0.0009017 [3.382e-05, 0.004772], identifiable = False, pi = 0.376, n = 29966, 977 s
+19:04:59 APEX_NIK_T1.pkl: F = 0.1682 [0.1346, 0.1976], identifiable = True, pi = 0.264, n = 29966, 731 s
+19:04:59 APEX_NIK_T2.pkl: F = 0.004334 [0.0001622, 0.0214], identifiable = False, pi = 0.239, n = 29966, 1024 s
+/scicore/home/zavolan/mirono0000/Projects/APA_localization/WF/scripts/ONT_fracSanity_pipeline.py:375: UserWarning: fracSanity: the data do not identify F (profile likelihood at the log-Gamma limit is within 0.00 of the optimum). Reported F and alpha_g are driven by the uniform prior on F; supply prior_F.
+  fit = su.fit_frac_sanity(ltq_t, var_t, ltq_p, var_p, prior_F=info.get("prior_F"), pi_max=PI_MAX, n_threads=threads,
+19:13:47 APEX_LMA_T1.pkl: F = 0.0006157 [2.336e-05, 0.003265], identifiable = False, pi = 0.406, n = 29966, 909 s
+19:18:38 APEX_LMA_T2.pkl: F = 0.0007015 [2.651e-05, 0.003717], identifiable = False, pi = 0.363, n = 29966, 953 s
+19:22:22 APEX_NucPore_T1.pkl: F = 0.002705 [0.0001002, 0.01409], identifiable = False, pi = 0.201, n = 29966, 1132 s
+19:23:22 APEX_NucPore_T2.pkl: F = 0.002988 [0.0001104, 0.01562], identifiable = False, pi = 0.186, n = 29966, 1102 s
+19:33:05 APEX_NES_T1.pkl: F = 0.02025 [0.0007598, 0.09504], identifiable = False, pi = 0.209, n = 29966, 1158 s
+19:35:09 APEX_NES_T2.pkl: F = 0.01636 [0.000606, 0.08006], identifiable = False, pi = 0.195, n = 29966, 992 s
+19:35:09 APEX_ERM_T1.pkl: F = 0.0841 [0.0679, 0.09962], identifiable = True, pi = 0.135, n = 29966, 582 s
+19:40:54 APEX_ERM_T2.pkl: F = 0.000938 [3.528e-05, 0.004895], identifiable = False, pi = 0.134, n = 29966, 1052 s
+19:51:34 APEX_KDEL_T1.pkl: F = 0.003324 [0.0001227, 0.01743], identifiable = False, pi = 0.232, n = 29966, 1170 s
+19:58:27 APEX_KDEL_T2.pkl: F = 0.04382 [0.001679, 0.1957], identifiable = False, pi = 0.256, n = 29966, 1522 s
+19:58:27 APEX_OMM_T1.pkl: F = 0.0007122 [2.69e-05, 0.00377], identifiable = False, pi = 0.140, n = 29966, 936 s
+19:58:47 APEX_OMM_T2.pkl: F = 0.0005139 [1.964e-05, 0.002723], identifiable = False, pi = 0.187, n = 29966, 1074 s
+20:12:37 APEX_MITO_T1.pkl: F = 0.009408 [0.0003457, 0.04942], identifiable = False, pi = 0.178, n = 29966, 1311 s
+20:12:37 APEX_MITO_T2.pkl: F = 0.004449 [0.0001635, 0.02357], identifiable = False, pi = 0.188, n = 29966, 1172 s
+20:17:21 Fractionation_Nuc_1.pkl: F = 0.001176 [4.386e-05, 0.00623], identifiable = False, pi = 0.484, n = 29966, 1135 s
+20:18:30 Fractionation_Nuc_2.pkl: F = 0.000982 [3.675e-05, 0.005201], identifiable = False, pi = 0.485, n = 29966, 1182 s
+20:28:41 Fractionation_Cyto_1.pkl: F = 0.0484 [0.001895, 0.1993], identifiable = False, pi = 0.500, n = 29966, 1055 s
+20:28:54 Fractionation_Cyto_2.pkl: F = 0.009757 [0.0003604, 0.0499], identifiable = False, pi = 0.456, n = 29966, 978 s
+20:28:54 === fit_replicates finished in 6149 s
+20:28:54 === usage
+20:28:57 usage: 5,725 PAS tests in 1,814 terminal exons
+20:29:06 usage APEX: NLS: 5,725 tests, padj < 0.05: 1,267
+20:29:13 usage APEX: NIK: 5,725 tests, padj < 0.05: 1,443
+20:29:21 usage APEX: LMA: 5,725 tests, padj < 0.05: 1,057
+20:29:28 usage APEX: NucPore: 5,725 tests, padj < 0.05: 474
+20:29:36 usage APEX: NES: 5,725 tests, padj < 0.05: 1,535
+20:29:43 usage APEX: ERM: 5,725 tests, padj < 0.05: 627
+20:29:51 usage APEX: KDEL: 5,725 tests, padj < 0.05: 989
+20:29:59 usage APEX: OMM: 5,725 tests, padj < 0.05: 585
+20:30:06 usage APEX: MITO: 5,725 tests, padj < 0.05: 234
+20:30:14 usage Fractionation: Nuc: 5,725 tests, padj < 0.05: 1,685
+20:30:21 usage Fractionation: Cyto: 5,725 tests, padj < 0.05: 966
+20:30:22 APA: log2 mean 3' UTR length for 1,814 genes
+20:30:26 APA APEX: NLS: 1,814 genes, {'NS': 1211, 'lengthening': 594, 'shortening': 9}
+20:30:34 APA APEX: NIK: 1,814 genes, {'NS': 1256, 'shortening': 457, 'lengthening': 101}
+20:30:41 APA APEX: LMA: 1,814 genes, {'NS': 1321, 'lengthening': 481, 'shortening': 12}
+20:30:49 APA APEX: NucPore: 1,814 genes, {'NS': 1549, 'shortening': 215, 'lengthening': 50}
+20:30:56 APA APEX: NES: 1,814 genes, {'NS': 1247, 'lengthening': 546, 'shortening': 21}
+20:31:04 APA APEX: ERM: 1,814 genes, {'NS': 1519, 'shortening': 156, 'lengthening': 139}
+20:31:11 APA APEX: KDEL: 1,814 genes, {'NS': 1510, 'lengthening': 300, 'shortening': 4}
+20:31:19 APA APEX: OMM: 1,814 genes, {'NS': 1579, 'lengthening': 211, 'shortening': 24}
+20:31:26 APA APEX: MITO: 1,814 genes, {'NS': 1761, 'lengthening': 45, 'shortening': 8}
+20:31:34 APA Fractionation: Nuc: 1,814 genes, {'NS': 1227, 'lengthening': 549, 'shortening': 38}
+20:31:41 APA Fractionation: Cyto: 1,814 genes, {'NS': 1563, 'lengthening': 237, 'shortening': 14}
+20:31:45 === usage finished in 171 s
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+APEX_seq_vs_Control.ipynb: done in 53 s, status 0
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+ONT_organelles_and_APEX.ReadMapping.ipynb: done in 48 s, status 0
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+APEX_seq.fracSanity.ipynb: done in 1150 s, status 0
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+APEX_vs_ONT_organelles.fracSanity.ipynb: done in 28 s, status 0
